@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    spring注入-->
+      <!--<bean id="student" class="com.sccs.spring.Student">
+          <property name="sName" value="敖嫚"></property>
+          <property name="sId" value="2020032337"></property>
+          <property name="sSex" value="女"></property>
+      </bean>-->
+<!--    p空间注入-->
+    <bean id="student" class="com.sccs.spring.Student" p:sName="敖嫚" p:sId="2020032337" p:sSex="女"></bean>
+
+
+
+<!--    有参构造注入-->
+    <bean id="orders" class="com.sccs.spring.Orders">
+        <constructor-arg name="oName" value="四川城市职业学院"></constructor-arg>
+        <constructor-arg name="oaddres" value="成都市龙泉驿区洪河大道中段"></constructor-arg>
+    </bean>
+
+</beans>
