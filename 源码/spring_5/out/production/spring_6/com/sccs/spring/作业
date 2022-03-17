@@ -1,0 +1,4 @@
+作业：
+1.创建Student类，方法：test方法里输出，属性：sName,sId,sSex完成Spring注入，并测试
+
+2.创建Emp类，方法，属性至少3个，实现Spring注入，完成测试

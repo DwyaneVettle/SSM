@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--set注入-->
+    <!--1.创建Book的对象,bean标签创建对象
+    id:表示这个对象的名字,唯一性,对象名命名：首字母小写，第二个单词首字母大写
+    class:表示类的全限定名，用于这个类来创建对象-->
+    <bean id="book" class="com.sccs.spring.Book">
+        <!--property标签用于为对象的属性赋值
+        name:表示对应这个对象的属性名
+        value表示给这个属性赋值&ndash;&gt;-->
+        <property name="bName" value="spring boot实战"></property>
+        <property name="bAuthor" value="Walls"></property>
+        <property name="address">
+            <value><![CDATA[<北京>]]></value>
+        </property>
+    </bean>
+    <!--<bean id="book" class="com.sccs.spring.Book" p:bAuthor="Walls" p:bName="Spring boot实战"></bean>-->
+
+    <!--有参构造注入-->
+    <!--生成order对象-->
+    <bean id="order" class="com.sccs.spring.Order">
+        <!--constructor-arg标签是为构造方法提供的注入属性的标签
+        name属性：哪一个属性赋值
+        value属性：为属性赋值-->
+        <constructor-arg name="oname" value="电脑"></constructor-arg>
+        <constructor-arg name="oaddr" value="四川城市职业学院"></constructor-arg>
+    </bean>
+</beans>

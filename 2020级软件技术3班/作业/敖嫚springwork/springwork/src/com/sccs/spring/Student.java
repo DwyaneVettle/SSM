@@ -29,6 +29,6 @@ public class Student {
         return sSex;
     }
     public void add(){
-       ;
+       System.out.println("°½‹ µÄ¡£¡£¡£");
     }
 }

@@ -1993,7 +1993,7 @@ public class BookServcie {
 
 
 
-### 4.2.对数据库增删改查操作
+### 4.2.对数据库增删改操作
 
 - **添加**
 
@@ -2140,5 +2140,287 @@ public void addBook(Book book) {
     }
 ```
 
-- **查询**
+### 4.3.查询操作
+
+#### 4.3.1.查询返回某个值
+
+1.在BookService中创建方法：
+
+```java
+  // 查询返回某个值
+    public int findCount() {
+        bookDao.selectBookCount();
+    }
+```
+
+2.在BookDao和BookDaoImpl中创建对应方法：
+
+```java
+ // 查询
+ int selectBookCount();
+```
+
+```java
+// 查询记录数
+    @Override
+    public int selectBookCount() {
+        String sql = "select count(*) from t_book";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+```
+
+3.测试：
+
+```java
+    @Test
+    public void testquery() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config01.xml");
+        BookService bookService = context.getBean("bookService", BookService.class);
+        int count = bookService.findCount();
+        System.out.println("count = " + count);
+        
+    }
+```
+
+#### 4.3.2.查询返回对象
+
+1.在BookService中创建方法：
+
+```java
+// 查询返回对象
+    public Book findObject(String bookId) {
+        return bookDao.findObject(bookId);
+    }
+```
+
+2.在BookDao和实现类中创建对应的方法，并完成业务操作：
+
+```java
+ //查询返回对象
+    Book findObject(String bookId);
+```
+
+```java
+@Override
+    public Book findObject(String bookId) {
+        String sql = "select * from t_book where book_id=?";
+        // rowmapper是Spring提供的一个接口，返回不同类型的数据，使用这个接口的实现类，完成数据的封装
+        Book book = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Book>(Book.class), bookId);
+        return book;
+    }
+```
+
+3.生成Book类的toString方法：
+
+```java
+ @Override
+    public String toString() {
+        return "Book{" +
+                "bookId='" + bookId + '\'' +
+                ", bookname='" + bookname + '\'' +
+                ", bstatus='" + bstatus + '\'' +
+                '}';
+    }
+```
+
+4.测试：
+
+```java
+ @Test
+    public void testqueryObject() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config01.xml");
+        BookService bookService = context.getBean("bookService", BookService.class);
+        Book book = bookService.findObject("111");
+        System.out.println(book);
+
+    }
+```
+
+#### 4.3.3.查询返回集合
+
+1.在BookService中创建方法：
+
+```java
+// 查询返回集合
+    public List<Book> findList() {
+        return bookDao.findList();
+    }
+```
+
+2.在BookDao和实现类中创建对应方法，并完成业务实现：
+
+```java
+// 查询返回集合
+    List<Book> findList();
+```
+
+```java
+ @Override
+    public List<Book> findList() {
+        String sql = "select * from t_book";
+        List<Book> bookList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class));
+        return bookList;
+    }
+```
+
+3.创建测试方法：
+
+```java
+@Test
+    public void testqueryList() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config01.xml");
+        BookService bookService = context.getBean("bookService", BookService.class);
+        List<Book> bookList = bookService.findList();
+        System.out.println(bookList);
+
+    }
+```
+
+
+
+### 4.4.实现对数据库的批量操作
+
+​	批量操作指操作表中的多条数据。
+
+
+
+#### 4.4.1.批量添加
+
+1.在BookService中添加批量添加的方法：
+
+```java
+// 批量添加
+    public void batchAdd(List<Object[]> batchArgs) {
+        bookDao.batchAddBook(batchArgs);
+    }
+```
+
+2.在BookDao和实现类中完成批量操作：
+
+```java
+// 实现批量添加
+    void batchAddBook(List<Object[]> batchArgs);
+```
+
+```java
+@Override
+    public void batchAddBook(List<Object[]> batchArgs) {
+        String sql = "insert into t_book values(?,?,?)";
+        int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
+        System.out.println(Arrays.toString(ints));
+
+    }
+```
+
+3.创建测试方法：
+
+```java
+@Test
+    public void testBatchUpdate() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config01.xml");
+        BookService bookService = context.getBean("bookService", BookService.class);
+        List<Object[]> list = new ArrayList<Object[]>();
+        Object[] obj1 = {"333","红楼梦","2"};
+        Object[] obj2 = {"444","西游记","2"};
+        Object[] obj3 = {"555","三国演义","1"};
+        Object[] obj4 = {"666","水浒传","1"};
+        Object[] obj5 = {"777","西厢记","2"};
+        list.add(obj1);
+        list.add(obj2);
+        list.add(obj3);
+        list.add(obj4);
+        list.add(obj5);
+        bookService.batchAdd(list);
+```
+
+#### 4.4.2.批量修改
+
+1.在BookService中创建批量修改方法：
+
+```java
+// 批量修改
+    public void batchUpdate(List<Object[]> batchArgs) {
+        bookDao.batchUpdate(batchArgs);
+    }
+```
+
+2.在BookDao和实现类中实现批处理修改：
+
+```java
+ void batchUpdate(List<Object[]> batchArgs);
+```
+
+```java
+@Override
+    public void batchUpdate(List<Object[]> batchArgs) {
+        String sql = "update t_book set bookname = ?,bstatus = ? where book_id = ?";
+        int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
+        System.out.println(Arrays.toString(ints));
+
+    }
+```
+
+3.测试：
+
+```java
+@Test
+    public void testBatchUpdate02() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config01.xml");
+        BookService bookService = context.getBean("bookService", BookService.class);
+        List<Object[]> list = new ArrayList<Object[]>();
+        Object[] obj1 = {"红楼梦-贾宝玉","1","333"};
+        Object[] obj2 = {"西游记-孙悟空","1","444"};
+        list.add(obj1);
+        list.add(obj2);
+        bookService.batchUpdate(list);
+
+    }
+```
+
+#### 4.4.3.批量删除
+
+1.在BookService中新增方法：
+
+```java
+// 批量修改
+    public void batchDelete(List<Object[]> batchArgs) {
+        bookDao.batchDelete(batchArgs);
+    }
+```
+
+2.在BookDao和实现类中书写批处理删除：
+
+```java
+void batchDelete(List<Object[]> batchArgs);
+```
+
+```java
+@Override
+    public void batchDelete(List<Object[]> batchArgs) {
+        String sql = "delete from t_book where book_id = ?";
+        int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
+        System.out.println(Arrays.toString(ints));
+    }
+```
+
+3.测试：
+
+```java
+@Test
+    public void testBatchDelete() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config01.xml");
+        BookService bookService = context.getBean("bookService", BookService.class);
+        List<Object[]> list = new ArrayList<Object[]>();
+        Object[] obj1 = {"333"};
+        Object[] obj2 = {"444"};
+        list.add(obj1);
+        list.add(obj2);
+        bookService.batchDelete(list);
+    }
+```
+
+
+
+## 5.Spring事务管理
 
