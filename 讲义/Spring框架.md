@@ -413,7 +413,7 @@ public class TestBean {
 ```java
 package com.sccs.spring5.bean;
 
-public class Class {
+public class Cls {
     private String cName;
 
     public void setcName(String cName) {
