@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="552782e6-7df2-4f6f-bdd1-ace126bdd5ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Cls.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Room.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Student.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/test/TestBean.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/spring-5/spring_config02.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/bean/Cls.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/bean/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/bean/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/test/TestBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spring_config02.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../作业/作业/谢涛/.idea/XT04.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-6/spring-5.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/test/SpringTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sccs/spring/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sccs/spring/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sccs/spring/作业" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sccs/spring/作业" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../作业/springwu.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../作业/zhangfujian.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../作业/作业.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../讲义/Spring框架.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../讲义/Spring框架.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-6" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -92,6 +74,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\笔记\ssm\2020级软件技术3班" />
+      <recent name="D:\笔记\ssm\2020级软件技术3班\spring-5\src" />
       <recent name="D:\笔记\ssm\code\spring-5\lib" />
     </key>
   </component>
@@ -162,10 +146,25 @@
       <updated>1646969125719</updated>
       <workItem from="1646969130202" duration="2286000" />
       <workItem from="1647916432692" duration="5518000" />
+      <workItem from="1647926491841" duration="144000" />
+      <workItem from="1648088028519" duration="147000" />
+      <workItem from="1648174725909" duration="428000" />
     </task>
+    <task id="LOCAL-00001" summary="spring外部bean、内部bean、级联bean">
+      <created>1647926598251</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647926598251</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="spring外部bean、内部bean、级联bean" />
+    <option name="LAST_COMMIT_MESSAGE" value="spring外部bean、内部bean、级联bean" />
   </component>
 </project>
