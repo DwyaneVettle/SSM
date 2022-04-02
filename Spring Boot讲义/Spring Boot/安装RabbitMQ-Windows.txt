@@ -1,0 +1,23 @@
+1. 安装ERLANG
+	安装完成后，配置环境变量
+	ERLANG_HOME:  C:\Program Files\erl10.2
+	PATH:  %ERLANG_HOME%\bin;
+	
+	在DOS下验证一下:
+	C:\>erl -version
+	
+2. 安装RabbitMQ
+
+3. 开启插件
+	rabbitmq_managemen是管理后台的插件、我们要开启这个插件才能通过浏览器访问登录页面
+	进入到sbin目录下（一定要以管理员身份运行）：
+	rabbitmq-plugins.bat enable rabbitmq_management	
+	
+	查询用户列表：
+	rabbitmqctl.bat list_users
+
+4. 重启服务	    
+	
+5. 访问:
+	http://localhost:15672
+	默认用户密码: guest/guest

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="007" class="com.oracle.springboot_01.bean.User">
+        <property name="userName" value="zhangsan"></property>
+        <property name="age" value="18"></property>
+    </bean>
+    <bean id="008" class="com.oracle.springboot_01.bean.Pet">
+        <property name="Pname" value="kitty"></property>
+    </bean>
+</beans>

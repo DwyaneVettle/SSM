@@ -1,0 +1,286 @@
+1、介绍
+	官方网站: https://www.elastic.co/
+	
+	下载内容: Elasticsearch
+			  Kibana
+			  
+	环境要求:
+		JDK 至少需要在1.8以上版本
+		Linux 的内核版本需要在2.6以上(如采用 CentOS7, Linux 内核为3.10+)
+		
+	
+2、安装JDK8(Elasticsearch 需要 Java 8 环境)
+
+　　1）解压文件：tar -zxvf jdk-8u201-linux-x64.tar.gz
+
+　　2）配置环境变量：
+
+　　　　a）vi /etc/profile
+
+　　　　b）在末尾添加
+　　　　　　export JAVA_HOME=/var/local/jdk1.8.0_201
+　　　　　　export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+　　　　　　export PATH=$JAVA_HOME/bin:$PATH:$HOME/bin
+
+　　　　c）source /etc/profile
+
+　　3）验证是否安装成功：java -version
+
+3、安装 Elasticsearch
+
+　　1）下载 Elasticsearch 放之/opt目录中
+
+　　2）解压文件(解压/opt)：tar -zxvf elasticsearch-6.6.0.tar.gz
+
+4、创建Elasticsearch用户
+
+　　es 规定 root 用户不能启动 es，所以需要新建一个其他用户来启动 es修改配置文件
+
+    先创建组, 再创建用户:
+		4.1）创建 elasticsearch 用户组
+			[root@localhost ~]# groupadd elasticsearch
+		
+		4.2）创建用户 es 并设置密码为es123456
+			[root@localhost ~]# useradd es
+			[root@localhost ~]# passwd es
+
+		4.3）用户es 添加到 elasticsearch 用户组
+			[root@localhost ~]# usermod -G elasticsearch es
+			[root@localhost ~]# chown -R es /opt/elasticsearch-6.6.0
+
+		4.4）设置sudo权限
+			[root@localhost ~]# visudo
+
+			在root ALL=(ALL) ALL 一行下面
+			添加es用户 如下:
+			es ALL=(ALL) ALL
+			 
+			添加成功保存后切换到es用户操作
+
+			[root@localhost ~]# su es
+			[es@localhost root]$
+
+5、修改配置文件
+	1）进入/opt/elasticsearch-6.6.0/config目录，
+	
+	2）如要修改JVM内存, 使用vi编辑器: vi jvm.options
+	   将默认1g的内存自己根据情况调整
+	
+	3）使用vi编辑器：vi elasticsearch.yml
+
+	　　3.1）取消如下注释，并修改为当前主机地址(注：冒号前面不能有空格，后面必须有一个空格)：
+	　　　　cluster.name: my-application
+	　　　　node.name: node-1
+	　　　　bootstrap.memory_lock: false            #ES官网建议生产环境需要设置bootstrap.memory_lock: true,  (设置为true会报错, 解决方法在附件1)
+	　　　　network.host: 192.198.126.130           #改成你电脑实际IP地址
+	　　　　http.port: 9200                         #9200是Web管理端口号; 另个9300是ES的TCP内部通信端口号
+	
+			#可不配
+			path.data: /opt/elasticsearch/data
+			path.logs: /opt/elasticsearch/logs
+	　　　　discovery.zen.ping.unicast.hosts: ["192.198.126.130"]
+	　　　　discovery.zen.minimum_master_nodes: 1   #注意，因为本人目前是单节点，这里必须为1	
+
+	　　3.2）新增如下配置:
+	　　　　transport.tcp.port: 9300
+	　　　　transport.tcp.compress: true
+	　　　　bootstrap.system_call_filter: false     #因为Centos6不支持SecComp,而ES默认bootstrap.system_call_filter为true进行检测     
+
+	　　3.3）使用vi编辑器，修改/etc/sysctl.conf文件，添加如下代码    
+	　　　　vm.max_map_count=655360
+
+	　　3.4）退出保存后执行如下命令:
+	　　　　sysctl -p
+
+	　　3.5）使用vi编辑器，修改/etc/security/limits.conf文件，在文件末尾添加如下代码  
+	　　　　#es为登录服务器的用户名
+			es soft nofile 65536
+			es hard nofile 65536
+			es soft nproc  4096
+			es hard nproc  4096 
+			或
+			* soft nofile 65536
+			* hard nofile 65536
+			* soft nproc  4096
+			* hard nproc  4096 
+	
+6、启动Elasticsearch
+	1) 重启Linux
+		reboot
+
+　　2）切换用户
+		cd /opt/elasticsearch-6.6.0
+　　　　su es
+
+　　3）启动服务
+　　　　elasticsearch-6.5.0/bin/elasticsearch
+
+　　4）后台启动
+　　　　elasticsearch-6.5.0/bin/elasticsearch -d
+
+　　5）测试是否启动成功
+　　　　curl -XGET 'http://192.168.126.130:9200/'
+
+
+7、附件
+	1）解决bootstrap.memory_lock: true报错的办法如下：
+		修改
+		/etc/security/limits.conf 
+		baoshan soft memlock unlimited
+		baoshan hard memlock unlimited
+
+		修改：
+		/etc/sysctl.conf 
+		vm.swappiness=0
+
+		之后重启机器
+		
+		
+		
+=================================================================================================
+
+
+
+1、Elasticsearch设置执行脚本并添加开机启动
+
+	1) 创建目录并设置权限
+		mkdir /opt/elasticsearch-6.6.0/run
+      	chmod 777 /opt/elasticsearch-6.6.0/run
+
+	2) 创建es服务系统配置文件
+		该文件用于配置es服务的系统变量，用于systemd调用。上面我们配置了ES_HOME、ES_PATH_CONF、PID_DIR等，其中PID_DIR用于存放es进程的PID，用于systemd管理es进程的启动或停止。
+		在 /etc/sysconfig/ 目录下创建 elasticsearch 文件，内容如下所示:
+		
+		命令: vi elasticsearch
+		
+		
+		
+		#######################
+		#    Elasticsearch    #
+		#######################
+
+		# Elasticsearch home directory
+		ES_HOME=/opt/elasticsearch-6.6.0
+
+		# Elasticsearch Java path
+		JAVA_HOME=/var/local/jdk1.8.0_201
+		CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOMR/jre/lib
+
+		# Elasticsearch configuration directory
+		ES_PATH_CONF=/opt/elasticsearch-6.6.0/config
+
+		# Elasticsearch PID directory
+		PID_DIR=/opt/elasticsearch-6.6.0/run
+
+		#############################
+		#   Elasticsearch Service   #
+		#############################
+
+		# SysV init.d
+		# The number of seconds to wait before checking if elasticsearch started successfully as a daemon process
+		ES_STARTUP_SLEEP_TIME=5
+
+		################################
+		#   Elasticsearch Properties   #
+		################################
+		# Specifies the maximum file descriptor number that can be opened by this process
+		# When using Systemd,this setting is ignored and the LimitNOFILE defined in
+		# /usr/lib/systemd/system/elasticsearch.service takes precedence
+		#MAX_OPEN_FILES=65536
+
+		# The maximum number of bytes of memory that may be locked into RAM
+		# Set to "unlimited" if you use the 'bootstrap.memory_lock: true' option
+		# in elasticsearch.yml.
+		# When using Systemd,LimitMEMLOCK must be set in a unit file such as
+		# /etc/systemd/system/elasticsearch.service.d/override.conf.
+		#MAX_LOCKED_MEMORY=unlimited
+
+		# Maximum number of VMA(Virtual Memory Areas) a process can own
+		# When using Systemd,this setting is ignored and the 'vm.max_map_count'
+		# property is set at boot time in /usr/lib/sysctl.d/elasticsearch.conf
+		#MAX_MAP_COUNT=262144
+
+	3) 创建es服务	
+		在 /usr/lib/systemd/system/ 目录下创建 elasticsearch.service文件，内容如下：	
+		
+		[Unit]
+		Description=Elasticsearch
+		Documentation=http://www.elastic.co
+		Wants=network-online.target
+		After=network-online.target
+
+		[Service]
+		Environment=ES_HOME=/opt/elasticsearch-6.6.0
+		Environment=ES_PATH_CONF=/opt/elasticsearch-6.6.0/config
+		# Environment=PID_DIR=/var/run/elasticsearch 此目录会随重启删除
+		Environment=PID_DIR=/opt/elasticsearch-6.6.0/run
+		EnvironmentFile=/etc/sysconfig/elasticsearch
+		WorkingDirectory=/opt/elasticsearch-6.6.0
+		User=es
+		Group=elasticsearch
+		ExecStart=/opt/elasticsearch-6.6.0/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid
+
+		# StandardOutput is configured to redirect to journalctl since
+		# some error messages may be logged in standard output before
+		# elasticsearch logging system is initialized. Elasticsearch
+		# stores its logs in /var/log/elasticsearch and does not use
+		# journalctl by default. If you also want to enable journalctl
+		# logging, you can simply remove the "quiet" option from ExecStart.
+		StandardOutput=journal
+		StandardError=inherit
+
+		# Specifies the maximum file descriptor number that can be opened by this process
+		LimitNOFILE=65536
+
+		# Specifies the maximum number of process
+		LimitNPROC=4096
+
+		# Specifies the maximum size of virtual memory
+		LimitAS=infinity
+
+		# Specifies the maximum file size
+		LimitFSIZE=infinity
+
+		# Disable timeout logic and wait until process is stopped
+		TimeoutStopSec=0
+
+		# SIGTERM signal is used to stop the Java process
+		KillSignal=SIGTERM
+
+		# Send the signal only to the JVM rather than its control group
+		KillMode=process
+
+		# Java process is never killed
+		SendSIGKILL=no
+
+		# When a JVM receives a SIGTERM signal it exits with code 143
+		SuccessExitStatus=143
+		 
+		[Install]
+		WantedBy=multi-user.target
+
+
+		注意： 上面的脚本中关于es的pid文件路径，本人的/var分区是单独划分的所以可以直接将pid文件设置在该分区下，如果你的虚拟机或服务器的/var是默认的tmps，则不能将pid设置在该分区下，因为重启服务器后会被自动删除，建议将pid文件路径设置为es的config目录下并授权为es用户即可。
+		
+
+	3） 给脚本赋权限：
+		chmod +x /usr/lib/systemd/system/elasticsearch.service
+		
+	4）重新加载systemd的守护线程：
+		systemctl daemon-reload
+		
+	5）开机启动生效：
+		systemctl enable elasticsearch.service
+
+	6）启动elasticsearch.service：
+		systemctl start elasticsearch.service
+		
+	7）查看elasticsearch.serivce状态：
+		systemctl status elasticsearch.service
+		ps aux|grep java
+		
+	8）如果出现错误可以使用如下命令查看日志：
+		journalctl -u elasticsearch.service
+
+
+

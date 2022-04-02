@@ -1,0 +1,110 @@
+1、介绍
+	官方网站: https://www.elastic.co/
+	
+	下载内容: Elasticsearch
+			  Kibana
+			  
+	环境要求:
+		JDK 至少需要在1.8以上版本
+		Linux的内核版本需要在2.6以上(如采用CentOS7, Linux内核为3.10+)
+		
+3、安装Kibana
+
+　　1）下载Kibana放之/opt目录中
+
+　　2）解压文件：tar -zxvf kibana-6.6.0-linux-x86_64.tar.gz
+
+4、修改配置文件
+	1）进入/opt/kibana-6.6.0-linux-x86_64/config目录
+	
+	2）使用vi编辑器：vi kibana.yml
+		server.port: 5601
+ 
+		server.host: "192.168.126.130"
+		 
+		elasticsearch.hosts: ["http://192.168.126.130:9200"]  #这里是elasticsearch的访问地址
+	
+5、启动Kibana
+	1）/opt/kibana-6.6.0-linux-x86_64/bin/kibana
+	
+	
+6、访问Kibana
+	http://192.168.42.132:5601/kibana	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+=========================
+
+1、Elasticsearch设置执行脚本并添加开机启动
+
+	1) 在/etc/init.d目录下新建文件elasticsearch
+	#--------------------------------------------------------------------------------------------------------
+			#!/bin/sh
+			#chkconfig: 2345 80 05
+			#description: elasticsearch
+			 
+			export JAVA_HOME=/usr/java/jdk1.8.0_112
+			export JAVA_BIN=/usr/java/jdk1.8.0_112/bin
+			export PATH=$PATH:$JAVA_HOME/bin
+			export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+			export JAVA_HOME JAVA_BIN PATH CLASSPATH
+			 
+			case "$1" in
+			start)
+				su lyt<<!
+				cd /home/lyt/dev-repo/elk5/elasticsearch-5.6.9
+				./bin/elasticsearch -d
+			!
+				echo "elasticsearch startup"
+				;;  
+			stop)
+				es_pid=`ps aux|grep elasticsearch | grep -v 'grep elasticsearch' | awk '{print $2}'`
+				kill -9 $es_pid
+				echo "elasticsearch stopped"
+				;;  
+			restart)
+				es_pid=`ps aux|grep elasticsearch | grep -v 'grep elasticsearch' | awk '{print $2}'`
+				kill -9 $es_pid
+				echo "elasticsearch stopped"
+				su lyt<<!
+				cd /home/lyt/dev-repo/elk5/elasticsearch-5.6.9
+				./bin/elasticsearch -d
+			!
+				echo "elasticsearch startup"
+				;;  
+			*)
+				echo "start|stop|restart"
+				;;  
+			esac
+			 
+			exit $?
+	#--------------------------------------------------------------------------------------------------------
+	
+	2) 保存退出，赋予执行权限
+	chmod +x elasticsearch 
+
+	3) 添加到开机启动任务
+	chkconfig -add elasticsearch
+
+	4) 如果不设置开机启动的话，也可以使用 service elasticsearch start/stop/restart 来操作

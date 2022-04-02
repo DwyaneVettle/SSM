@@ -1,0 +1,130 @@
+补充Linux防火墙知识
+	CentOS7使用firewalld打开关闭防火墙与端口
+
+	1、firewalld的基本使用
+		启动： systemctl start firewalld
+		关闭： systemctl stop firewalld
+		查看状态： systemctl status firewalld 
+		开机禁用  ： systemctl disable firewalld
+		开机启用  ： systemctl enable firewalld
+ 
+ 
+	2.systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。
+		启动一个服务：systemctl start firewalld.service
+		关闭一个服务：systemctl stop firewalld.service
+		重启一个服务：systemctl restart firewalld.service
+		显示一个服务的状态：systemctl status firewalld.service
+		在开机时启用一个服务：systemctl enable firewalld.service
+		在开机时禁用一个服务：systemctl disable firewalld.service
+		查看服务是否开机启动：systemctl is-enabled firewalld.service
+		查看已启动的服务列表：systemctl list-unit-files|grep enabled
+		查看启动失败的服务列表：systemctl --failed
+		
+	也就是说，之前我们没有设置CentOS7开机自动关闭防火墙，在此我们需要执行以下指令，设置开机自动关闭防火墙:
+		systemctl disable firewalld.service
+
+--------------------------------------------------------------
+
+1.准备工作
+	yum install gcc glibc-devel make ncurses-devel openssl-devel xmlto
+	yum install perl -y
+	
+2.安装Erlang
+	#解压
+	tar xvf otp_src_21.2.tar.gz
+	cd otp_src_21.2
+	
+	#创建安装目录
+	mkdir /usr/local/erlang
+	 
+	#配置 '--prefix'指定的安装目录
+	./configure --prefix=/usr/local/erlang --with-ssl -enable-threads -enable-smmp-support -enable-kernel-poll --enable-hipe --without-javac	
+	 
+	#安装
+	make && make install
+
+3.配置erlang环境变量
+	vi /etc/profile
+
+	#在文件末尾添加下面代码 'ERLANG_HOME'等于上一步'--prefix'指定的目录
+	ERLANG_HOME=/usr/local/erlang
+	PATH=$ERLANG_HOME/bin:$PATH
+	export ERLANG_HOME
+	export PATH
+
+	#使环境变量生效
+	source /etc/profile
+
+	#输入命令检验是否安装成功
+	erl -version
+
+4.安装RabbitMQ
+	#执行RPM安装
+	rpm -ivh --nodeps rabbitmq-server-3.7.11-1.el7.noarch.rpm
+
+	注意: 
+		如果是重装请记得删除/var/lib/rabbitmq目录和/etc/rabbitmq目录，否则可能服务会起不来
+	
+	#执行插件
+	rabbitmq-plugins enable rabbitmq_management
+	
+	#启动服务
+	rabbitmq-server
+	
+	#访问RabbitMQ Web
+	http://<虚拟机IP>:15672/
+	
+	#为RabbitMQ创建用户并赋权，注意不要退出RabbitMQ的启动服务
+		添加用户
+			rabbitmqctl add_user admin admin123456
+		
+		添加权限
+			rabbitmqctl set_user_tags admin administrator
+		
+		修改用户角色
+			rabbitmqctl set_permissions -p / admin '.*' '.*' '.*'
+		
+	#后台启动
+		rabbitmq-server -detached
+		
+	#设置开机启动RabbitMQ
+		chkconfig rabbitmq-server on
+		
+			#输出:
+			Note: Forwarding request to 'systemctl enable rabbitmq-server.service'.
+			Created symlink from /etc/systemd/system/multi-user.target.wants/rabbitmq-server.service to /usr/lib/systemd/system/rabbitmq-server.service.
+				
+		systemctl enable rabbitmq-server.service
+		
+		chmod 777 /usr/lib/systemd/system/rabbitmq-server.service
+		
+		#在这要注意，它不会随Linux启动, 原因可通过start来测试启动RabbitMQ服务，会报一个错误
+		systemctl start rabbitmq-server.service
+
+		#原因是找不到ERL的环境变量配置
+			在/usr/lib/rabbitmq/bin/这个目录下，修改rabbitmq-server，
+			cd /usr/lib/rabbitmq/bin/
+			vi rabbitmq-server
+			
+			在187行后面添加以下两行代码
+			188 ERLANG_HOME=/usr/local/erlang
+			189 export PATH=$ERLANG_HOME/bin:$PATH
+			
+			reboot 重启一下Linux，再访问我们的RabbitMQ网页， 这样子就可以让RabbitMQ随着Linux开机自动启动。
+		
+	
+5.RabbitMQ的rabbitmqctl常用命令
+	add_user        <UserName> <Password>
+	delete_user    <UserName>
+	change_password <UserName> <NewPassword>
+	list_users
+	add_vhost    <VHostPath>
+	delete_vhost <VHostPath>
+	list_vhostsset_permissions  [-p <VHostPath>] <UserName> <Regexp> <Regexp> <Regexp>
+	clear_permissions [-p <VHostPath>] <UserName>
+	list_permissions  [-p <VHostPath>]
+	list_user_permissions <UserName>
+	list_queues    [-p <VHostPath>] [<QueueInfoItem> ...]
+	list_exchanges [-p <VHostPath>] [<ExchangeInfoItem> ...]
+	list_bindings  [-p <VHostPath>]
+	list_connections [<ConnectionInfoItem> ...]

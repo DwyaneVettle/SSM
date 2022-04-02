@@ -1,0 +1,37 @@
+/* pages/list/list.wxss */
+.widget{
+  margin-top: 6rpx;
+  margin-bottom: 6rpx;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  padding-left: 42rpx;
+  padding-right: 42rpx;
+  position: relative;
+  border: #eee 1px solid;
+}
+
+.container {
+  height: 100%;  
+  box-sizing: border-box;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  display: table;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;  
+}
+
+.column {
+  width: 5.5rem;
+  display: table-cell;
+}
+
+.link_column {
+  width: 8rem;
+  display: table-cell;
+}
+
+.link {
+  color: #A8A8A8;
+  display: inline-table;
+}

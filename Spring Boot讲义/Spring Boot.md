@@ -1,0 +1,479 @@
+# Spring Boot
+
+## Spring的能力
+
+![](Spring Boot.assets/2022-03-30_163232.png)
+
+<img src="Spring Boot.assets/image-20220330163632955.png" alt="image-20220330163632955" style="zoom:67%;" />
+
+## 1.什么是SpringBoot
+
+​	JAVAEE 应用体系中繁重的配置、低下的开发效率、高难度的三方集成，复杂的部署流程等等一直被开发人员所诟病。
+
+​	Spring 这样的轻量级的资源整合框架，在实现其相对比较多的资源整合时，依旧需要大量的手动依赖管理，复杂的 XML 配置(还经常没有提示)。现在的软件生态应用也已经形成一定的规模，系统架构正在从单体架构，分布式架构，跨越到微服务架构。随着整个架构体系的变化，企业对技术的要求也在变化，现在的企业更注重技术的开箱即用，更注重技术在生态圈中的深度融合，更注重轻量级的运维。由此由此spring boot 诞生。
+
+​	Spring Boot 是 Java 软件开发框架（很多人现在把它理解为一个脚手架），其设计目的是用来简化 Spring 项目的初始搭建以及开发过程。该框架使用了特定的注解方式来进行配置，从而使开发人员不再需要大量的 xml 配置。不再需要大量的手动依赖管理。Spring Boot 基于快速构建理念，通过约定大于配置，开箱即用的方式，希望能够在蓬勃发展的快速应用开发领域成为其领导者。
+
+​	SpringBoot的核心特性如下：
+
+- **起步依赖(Starter Dependency)**
+- **自动配置(Auto Configuration)**
+- **健康检查(Actator)-监控**
+- **嵌入式服务(Tomcat,Jetty)等**
+
+
+
+## 2.Spring Boot - Hello World
+
+**1.创建spring boot工程，添加spring web依赖：**
+
+<img src="Spring Boot.assets/2022-03-31_154010.png" style="zoom: 50%;" />
+
+<img src="Spring Boot.assets/2022-03-31_154223.png" style="zoom:50%;" />
+
+
+
+**2.在src/main/java/com.oracle.springboot_01下创建包controller，并创建类HelloController，代码如下：**
+
+```java
+package com.oracle.springboot_01.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/*@RestController：将数据返回为json，相当于@Controller和@ResponseBody的结合*/
+@RestController
+public class HelloContrller {
+    
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello World!";
+    }
+}
+```
+
+
+
+**3.启动spring boot主类；**
+
+**4.访问localhost:8080/hello得到响应：**
+
+<img src="Spring Boot.assets/image-20220331160733394.png" alt="image-20220331160733394" style="zoom: 67%;" />
+
+Spring Boot支持将项目打包成jar包来简化部署，然后通过java -jar的方式运行，它的实现是就pom.xml的插件配置实现的：
+
+```xml
+<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.7.RELEASE</version>
+                <configuration>
+                    <mainClass>com.oracle.springboot_01.Springboot01Application</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+```
+
+​	Spring Boot的强大在于它能方便的更改配置，如如果在SSM的项目中要修改tomcat的端口号，需要进入到tomcat的配置文件修改后才能生效。但Spring Boot项目能通过修改配置文件的方式进行配置的修改，在src/resource下创建application.propertise文件，在此文件中进行修改即可。如将默认的端口号8080修改成8888：
+
+```properties
+server.port=8888
+```
+
+
+
+## 3.Spring Boot启动过程
+
+![image-20220331161107694](Spring Boot.assets/image-20220331161107694.png)
+
+spring boot在启动时的操作：
+
+1. 基于线程调用I/O从磁盘读取类，将其加载到内存中，此时回基于类创建字节码对象(Class类型);
+2. 基于Class对象(字节码对象)读取类的配置信息(注解等)；
+3. 基于类的配置进行相应的配置存储(交给Spring管理的类配置)-Map<String,BeanDifinition>；
+4. 基于类的配置借助BeanFactory创建类的实例对象，多个对象存储到Map<String,Object>。
+
+
+
+## 4.Spring Boot的依赖管理和配置原理
+
+- **父项目做依赖管理：**在pom.xml文件中我们可以看到Spring Boot的项目依赖，它里面定义了我们开发所使用的大部分依赖及版本号，我们可以直接添加依赖使用就可以了，无需关注关注版本号，Spring Boot可以自动给我们仲裁版本：
+
+```xml
+<dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+</dependencyManagement>
+```
+
+<img src="Spring Boot.assets/image-20220401101708695.png" alt="image-20220401101708695" style="zoom:50%;" />
+
+- **修改版本号：**加入Spring Boot所提供的版本和我们开发时不匹配，我们也可以修改想要的版本，可以打开网站mvnrepository.com查找到需要的依赖，复制到pom.xml中就可以了：
+
+```xml
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.26</version>
+</dependency>
+```
+
+当然，在更多的时候我们是将对应依赖的版本写到propertise的标签中：
+
+```xml
+<properties>
+      <mysql.version>8.0.26</mysql.version>
+</properties>
+```
+
+```xml
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+     <groupId>mysql</groupId>
+     <artifactId>mysql-connector-java</artifactId>
+     <version>${mysql.version}</version>
+</dependency>
+```
+
+- **场景启动器：**在我们学习spring框架的时候导入了很多的依赖，复杂且麻烦。而Spring Boot给我们提供了一个starter场景启动器，只要引入了这个场景依赖，我们所需要的依赖就会被自动引入。spring-boot-starter-* ， *就某种场景，如我们想要使用web依赖，就添加如下一个就可以了：
+
+```xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+​	Spring Boot为我们提供了很多场景起步依赖，详见官方文档：https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-starter。
+
+​	除了Spring Boot为我们提供的依赖外，我们也可以自定义一些场景启动器，官网建议的命名不能以spring-boot-开头，这些第三方启动器建议的命名格式为：
+
+```xml
+*-spring-boot-starter
+```
+
+打开启动依赖的树状结构可以看到为我们提供了哪些依赖：
+
+![image-20220401104156200](Spring Boot.assets/image-20220401104156200.png)
+
+
+
+- **自动配置常用组件：**之前我们整合Spring和Spring MVC需要自己配置如DispatcherServlet等常用组件，但有了起步依赖后，它会为我们自动配置好一些常用的组件，我们可以在主启动程序中打印输出查看Spring Boot给我们配置了哪些常用组件：
+
+```java
+package com.oracle.springboot_01;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+public class Springboot01Application {
+
+    public static void main(String[] args) {
+
+        ConfigurableApplicationContext run = 	SpringApplication.run(Springboot01Application.class, args);
+        String[] names = run.getBeanDefinitionNames();
+        for (String name : names) {
+         	  System.out.println(name);
+        }
+    }
+}
+
+```
+
+打印出来的组件：
+
+<img src="Spring Boot.assets/image-20220401105514841.png" alt="image-20220401105514841" style="zoom:67%;" />
+
+- **自动包扫描：**在Spring中我们需要扫描包结构才能找到所要运行的文件，但Spring Boot的启动注解为我们提供了自动扫描的功能。假如我们新建一个类和启动类不在一个包或子包下来发送请求，这时候是请求不到的：
+
+```java
+package com.oracle.aa;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Controller {
+
+    @RequestMapping("/aa")
+    public String aa() {
+        return "你好";
+    }
+}
+```
+
+发送localhost:8888/aa的请求没有相应到：
+
+<img src="Spring Boot.assets/image-20220401111511134.png" alt="image-20220401111511134" style="zoom:50%;" />
+
+**如果想要加载和主类不在一个包结构下的类，需要在主类注解上扫描这个包：**
+
+```java
+@SpringBootApplication(scanBasePackages = "com.oracle")
+```
+
+<img src="Spring Boot.assets/image-20220401111752446.png" alt="image-20220401111752446" style="zoom:50%;" />
+
+在开发中，@SpringBootApplication相当于如下3个注解的集合：
+
+```java
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan("com.oracle")
+```
+
+- **默认值：**Spring Boot为我们提供了一些默认值，但如果我们不需要这些默认值来运行程序，我们可以通过application.propertise文件来修改，如tomcat服务器接受连接数量默认值为1000，我们可以在配置文件中修改为你想要的值：
+
+```properties
+server.tomcat.accept-count=1000
+```
+
+
+
+
+
+## 5.IOC容器注解
+
+### 5.1.@Configuration和@Bean
+
+​	在使用Spring来为属性注入值时，需要复杂的xml配置，而Spring Boot为我们提供了@Configuration和@Bean来配置并添加组件，简化了配置。
+
+如我们创建两个类User和Pet:
+
+```java
+package com.oracle.springboot_01.bean;
+
+public class User {
+    private String userName;
+    private Integer age;
+
+    public User() {}
+    public User(String userName, Integer age) {
+        this.userName = userName;
+        this.age = age;
+    }
+}
+```
+
+```java
+package com.oracle.springboot_01.bean;
+
+public class Pet {
+    private String Pname;
+
+    public Pet(String pname) {
+        Pname = pname;
+    }
+}
+```
+
+在之前的Spring框架中，我们需要创建xml配置文件来为对象注入属性值，而现在只需要创建配置类通过@Configuration和@Bean来添加组件：
+
+```java
+package com.oracle.springboot_01.configuration;
+
+import com.oracle.springboot_01.bean.Pet;
+import com.oracle.springboot_01.bean.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+/*
+* @Configuration:告诉Spring Boot这是一个配置类，等同于xml文件
+* 1.配置类使用@Bean给容器标注组件，默认是单实例的
+* 2.配置类本身也是一个组件
+* 3.proxyBeanMethods默认值为true，标识代理bean的方法，用来解决组件依赖
+*     全配置Full(proxyBeanMethods = true)-调用方法得到同一个对象
+*     轻量级配置Lite(proxyBeanMethods = false)-调用方法得到不同对象
+*     也就是说如果为true，每次都会检查容器是否有这个对象，如果为false则
+*     不会检查对象是否存在，直接创建
+*  */
+@Configuration(proxyBeanMethods = true)
+public class MyConfig {
+
+    /*
+    *  @Bean给容器添加组件，以方法名作为组件id(也可以在标签上自定义id)，
+    *  返回类型就是组件类型，返回的值就是容器中的实例
+    * 外部调用这个方法获取的对象都是注册到容器中的单实例对象
+    * */
+    @Bean
+    public User user() {
+        return new User("michela", 20);
+    }
+
+    @Bean
+    public Pet pet() {
+        return new Pet("tom猫");
+    }
+}
+```
+
+Spring Boot获取到的组件默认是单例的，到**启动类**中获取多个组件并进行比较我们可以发现它们返回的结果为True:
+
+```java
+public static void main(String[] args) {
+
+        ConfigurableApplicationContext run = SpringApplication.run(Springboot01Application.class, args);
+        String[] names = run.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
+        User user01 = run.getBean("user", User.class);
+        User user02 = run.getBean("user", User.class);
+        System.out.println("组件比较：" + (user01 == user02));
+        // 配置类本身也是一个组件
+        MyConfig bean = run.getBean(MyConfig.class);
+        System.out.println(bean);
+
+        /*如果proxyBeanMethods = true则调用配置类方法得到同一个对象
+        * 如果proxyBeanMethods = false则调用配置类方法得到不同对象*/
+        User user03 = bean.user();
+        User user04 = bean.user();
+        System.out.println("注解代理对象比较："+(user03 == user04));
+
+    }
+```
+
+<img src="Spring Boot.assets/image-20220401153138529.png" alt="image-20220401153138529" style="zoom:67%;" />
+
+![image-20220401155356415](Spring Boot.assets/image-20220401155356415.png)
+
+
+
+### 5.2.Spring注解
+
+​	除了@Configuration和@Bean外，Spring所提供的@Componet、@Controller、@Service、@Repository也同样适用于Spring Boot:
+
+- @Componet：表示一个组件；
+- @Controller：表示一个控制器；
+- @Service：表示业务逻辑组件；
+- @Repository：表示数据层组件。
+
+
+
+### 5.3.@Import
+
+​	@Import注解使用方式和@Configuration类似，它可以同时添加项目中的多个组件包含引入的jar包中的类，我们在MyConfig类上添加这个注解，并添加组件测试：
+
+```java
+/*  @Import({User.class, Driver.class})
+*       给容器自动创建这两个类型的组件，默认组件的名字就是该类的全类名
+*/
+@Import({User.class, Driver.class})
+```
+
+在**启动类**中测试：
+
+```java
+// 测试@Import组件
+String[] name = run.getBeanNamesForType(User.class);
+for (String s : name) {
+     System.out.println(s);
+}
+Driver driver = run.getBean(Driver.class);
+System.out.println(driver);
+```
+
+<img src="Spring Boot.assets/image-20220401162438460.png" alt="image-20220401162438460" style="zoom: 80%;" />
+
+
+
+### 5.4.@Conditional
+
+@Conditional可以按照指定的条件进行组件注入。
+
+<img src="Spring Boot.assets/image-20220401202238058.png" alt="image-20220401202238058" style="zoom:67%;" />
+
+注释pet方法的@Bean，使该方法没有在容器中创建实例，并注释掉主启动类中关于该方法的代码：
+
+```java
+ // @Bean
+    public Pet pet() {
+        return new Pet("tom猫");
+    }
+```
+
+在主启动类中检测容器中是否创建了tom猫这个实例：
+
+```java
+boolean pet = run.containsBean("pet");
+System.out.println("容器中是否包含：" + pet );
+boolean user = run.containsBean("user");
+System.out.println("容器中是否包含：" + user );
+```
+
+![image-20220401211759853](Spring Boot.assets/image-20220401211759853.png)
+
+这个时候我们发现pet没有在容器中，但是user还在。如果现在因没有pet而排除user在容器外，我们就可以使用条件注解@ConditionalOnBean
+
+```java
+@Bean
+@ConditionalOnBean(name = "pet")
+public User user() {
+     return new User("michela", 20);
+}
+```
+
+此时再启动主类测试：
+
+![image-20220401212339556](Spring Boot.assets/image-20220401212339556.png)
+
+
+
+### 5.5.@ImportResource
+
+​	@ImportResource允许我们还是利用xml的方式来创建对象，因为我们此前有了注解@Configuration和@Bean后创建的对象都以注解配置为优先原则，如果还想使用xml创建对象，那么我们就可以利用@ImportResource来完成。在resource下创建spring_config.xml文件，并创建实例对象：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="007" class="com.oracle.springboot_01.bean.User">
+        <property name="userName" value="zhangsan"></property>
+        <property name="age" value="18"></property>
+    </bean>
+    <bean id="008" class="com.oracle.springboot_01.bean.Pet">
+        <property name="Pname" value="kitty"></property>
+    </bean>
+</beans>
+```
+
+此时我们在主启动类中检测是否包含007和008两个对象，检测发现并不存在：
+
+```java
+boolean aa = run.containsBean("007");
+System.out.println("容器中是否包含aa：" + aa );
+boolean bb = run.containsBean("008");
+System.out.println("容器中是否包含bb：" + bb );
+```
+
+![image-20220401214115489](Spring Boot.assets/image-20220401214115489.png)
+
+如果我们任然想让这两个对象注册到容器中，我们可以在配置类上加上注解@ImportResource:
+
+```java
+@ImportResource
+public class MyConfig {...}
+```
+
+![image-20220401214304466](Spring Boot.assets/image-20220401214304466.png)
+
+### 5.6.配置绑定

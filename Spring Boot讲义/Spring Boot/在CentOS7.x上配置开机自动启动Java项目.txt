@@ -1,0 +1,38 @@
+1、创建一个Linux CentOS7的服务
+   在 /usr/lib/systemd/system/ 目录下创建 springboot.service文件，内容如下：	
+　　[Unit]
+	Description=SpringBoot service
+	After=syslog.target
+
+	[Service]
+	Type=simple
+	ExecStart=/var/local/jdk1.8.0_201/bin/java -jar /opt/springboot/maindemo.jar
+
+	[Install]
+	WantedBy=multi-user.target
+
+	说明
+		Description 服务描述
+		/var/local/jdk1.8.0_201/bin/java 为java路径（这里是绝对路径，可以使用其他可执行java的路径）
+		/opt/springboot/maindemo.jar     可执行jar包的路径
+
+2、在部署服务器上执行以下命令（CentOS7）
+　　刷新服务配置文件
+　　systemctl daemon-reload
+　　
+　　服务设置为开机启动
+　　systemctl enable springboot.service
+　　
+　　启动服务
+　　systemctl start springboot.service
+
+　　停止服务
+　　systemctl stop springboot.service
+
+　　查看服务状态
+　　systemctl status springboot.service
+　　
+	查看日志
+　　journalctl -u springboot.service
+
+
