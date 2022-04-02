@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--    配置User类对象的创建
+          spring中由bean标签来创建对象，id为对这个对象起的名字
+          class为这个对象的全路径类名-->
+<!--    <bean id="user" class="com.sccs.spring5.User"></bean>-->
+<!--    set方法注入属性-->
+    <bean id="book" class="com.sccs.spring5.Book">
+        <!--     使用property完成属性注入
+              name:类里的属性名称
+              value:向属性注入值-->
+        <property name="bname" value="六脉神剑"></property>
+        <property name="bauthor" value="段誉"></property>
+    </bean>
+<!--    有参构造输入属性-->
+<!--    <bean id="orders" class="com.sccs.spring5.Orders">-->
+<!--        <constructor-arg name="oname" value="KFC"></constructor-arg>-->
+<!--        <constructor-arg name="oaddr" value="成都"></constructor-arg>-->
+<!--    </bean>-->
+    <bean id="book" class="com.sccs.spring5.Book" p:bname="降龙十八掌" p:bauthor="乔峰"></bean>
+</beans>
