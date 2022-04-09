@@ -5,55 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="552782e6-7df2-4f6f-bdd1-ace126bdd5ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/lib/commons-logging-1.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/lib/druid-1.1.9.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/lib/spring-beans-5.2.6.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/lib/spring-context-5.2.6.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/lib/spring-core-5.2.6.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/lib/spring-expression-5.2.6.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/2022-03-22_103434.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/IntelliJ IDEA 2021.3.2.lnk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/bean/Cls.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/bean/Order.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/bean/Room.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/bean/Student.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/dao/UserDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/dao/UserDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/factorybean/Course.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/factorybean/MyBean.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/test/TestBean.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/com/sccs/spring/作业" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/spring_config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/spring_config02.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/out/production/spring-5/spring_config03.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/spring-5.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/2022-03-22_103434.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/IntelliJ IDEA 2021.3.2.lnk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/bean/Cls.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/bean/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/bean/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/bean/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/dao/UserDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/factorybean/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/factorybean/MyBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/jdbc.propertise" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/test/TestBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/com/sccs/spring/作业" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/spring_config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/spring_config02.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/spring_config03.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../spring-transaction/src/spring_config04.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/com.springsource.net.sf.cglib-2.2.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/com.springsource.org.aopalliance-1.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/druid-1.1.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.7-bin.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-aop-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-beans-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-context-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-core-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-expression-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-jdbc-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-orm-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/spring-tx-5.2.6.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/2022-03-22_103434.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/IntelliJ IDEA 2021.3.2.lnk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Cls.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Order.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Room.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/bean/Student.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/dao/UserDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/dao/UserDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/factorybean/Course.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/factorybean/MyBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/test/TestBean.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/作业" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/spring_config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/spring_config02.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/spring-5/spring_config03.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-transaction.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/dao/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/jdbc.propertise" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/test/TestBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spring_config.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../spring_demo02/src/作业" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-5/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring讲义/Spring框架.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring讲义/Spring框架.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +64,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="spring-beans.schema" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -110,7 +107,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-transaction" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/spring-tx-5.2.6.RELEASE.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -122,16 +119,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\笔记\ssm\2020级软件技术3班" />
-      <recent name="D:\笔记\ssm\2020级软件技术3班\spring-5" />
+      <recent name="D:\笔记\ssm\2020级软件技术3班\spring-transaction\lib" />
       <recent name="D:\笔记\ssm\2020级软件技术3班\spring-5\src" />
       <recent name="D:\笔记\ssm\2020级软件技术3班\spring-5\lib" />
+      <recent name="D:\笔记\ssm\2020级软件技术3班" />
       <recent name="D:\笔记\ssm\code\spring-5\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestBean.test04">
+  <component name="RunManager" selected="JUnit.TestBean.test01">
     <configuration name="SpringTest.testBean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring-5" />
+      <module name="spring-transaction" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.sccs.spring.test.*" />
@@ -147,7 +144,7 @@
       </method>
     </configuration>
     <configuration name="TestBean.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring-5" />
+      <module name="spring-transaction" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.sccs.spring.test.*" />
@@ -163,7 +160,7 @@
       </method>
     </configuration>
     <configuration name="TestBean.test02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring-5" />
+      <module name="spring-transaction" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.sccs.spring.test.*" />
@@ -179,7 +176,7 @@
       </method>
     </configuration>
     <configuration name="TestBean.test03" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring-5" />
+      <module name="spring-transaction" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.sccs.spring.test.*" />
@@ -195,7 +192,7 @@
       </method>
     </configuration>
     <configuration name="TestBean.test04" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring-5" />
+      <module name="spring-transaction" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.sccs.spring.test.*" />
@@ -212,10 +209,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBean.test01" />
         <item itemvalue="JUnit.TestBean.test04" />
         <item itemvalue="JUnit.TestBean.test02" />
         <item itemvalue="JUnit.TestBean.test03" />
-        <item itemvalue="JUnit.TestBean.test01" />
         <item itemvalue="JUnit.SpringTest.testBean" />
       </list>
     </recent_temporary>
@@ -235,7 +232,7 @@
       <workItem from="1648174725909" duration="428000" />
       <workItem from="1649384164035" duration="5997000" />
       <workItem from="1649470019803" duration="813000" />
-      <workItem from="1649510602943" duration="60000" />
+      <workItem from="1649510673892" duration="3423000" />
     </task>
     <task id="LOCAL-00001" summary="spring外部bean、内部bean、级联bean">
       <created>1647926598251</created>

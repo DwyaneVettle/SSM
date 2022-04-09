@@ -1,0 +1,3 @@
+创建repisitory,service,controller包，分别创建3个类，然后用@Repository,
+@Servcie,@Controller
+完成注入测试

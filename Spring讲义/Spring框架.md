@@ -1,4 +1,4 @@
-# Spring框架 SSM
+Spring框架 SSM
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -2442,3 +2442,222 @@ void batchDelete(List<Object[]> batchArgs);
 
 ## 5.Spring事务管理
 
+
+
+### 5.1.1什么是事务
+
+​	数据库事务( transaction)是访问并可能操作各种[数据项](https://baike.baidu.com/item/数据项/3227309)的一个数据库操作[序列](https://baike.baidu.com/item/序列/1302588)，这些操作**要么全部执行,要么全部不执行**，是一个不可分割的工作单位。事务由事务开始与事务结束之间执行的全部数据库操作组成。
+
+​	数据库事务的四个特性：
+
+- **原子性**：要么都成功，要么都失败；
+- **一致性**：操作的前后总量不变；
+- **隔离性**：多事务间互不影响；
+- **持久性**：提交到数据库的持久。
+
+
+
+### 5.2.搭建事务环境
+
+![image-20220409211240452](Spring框架.assets/image-20220409211240452.png)
+
+我们以常见的银行转账的方式，在Dao层实现转账和收款的操作，在Service层完成这个逻辑。在数据库tb_user中创建账户表acount，并添加两条数据进行测试，表结构和字段如下：
+
+![image-20220409211959271](Spring框架.assets/image-20220409211959271.png)
+
+![image-20220409212013531](Spring框架.assets/image-20220409212013531.png)
+
+
+
+- **创建项目spring_transaction引入相关jar包，并创建Service和Dao，配置连接池，完成属性注入-在Service中注入Dao，在Dao中注入JdbcTemplate，在JdbcTemplate中注入DataSource:**
+
+<img src="Spring框架.assets/image-20220409222010317.png" alt="image-20220409222010317" style="zoom:67%;" />
+
+```properties
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.URL=jdbc:mysql://localhost:3306/tb_user?userUnicode=true&characterEncoding=utf-8&useSSL=false
+jdbc.username=root
+jdbc.password=root
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--外部文件引入-->
+    <context:property-placeholder location="classpath:com/sccs/spring/jdbc.propertise"></context:property-placeholder>
+    <!--组件扫描-->
+    <context:component-scan base-package="com.sccs.spring"></context:component-scan>
+    <!--配置连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+                            destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="url" value="${jdbc.URL}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!--创建jdbcTemplate对象-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入dataSource-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+</beans>
+```
+
+```java
+package com.sccs.spring.dao;
+
+public interface UserDao {
+
+    // 减少钱
+    public void reduceMoney();
+    // 增加钱
+    public void addMoney();
+}
+```
+
+```java
+package com.sccs.spring.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class UserDaoImpl implements UserDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    // 张三转账给李四200元
+    @Override
+    public void reduceMoney() {
+        String sql = "update acount set money=money-? where username=?";
+        jdbcTemplate.update(sql,200,"zhangsan");
+    }
+
+    // 李四收到200元
+    @Override
+    public void addMoney() {
+        String sql = "update acount set money=money+? where username=?";
+        jdbcTemplate.update(sql,200,"lisi");
+    }
+
+}
+```
+
+```java
+package com.sccs.spring.service;
+
+import com.sccs.spring.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserDao userDao;
+
+    // 转账的方法
+    public void accountMoney() {
+        // 张三转账少200
+        userDao.reduceMoney();
+        // 李四收款多200
+        userDao.addMoney();
+    }
+}
+```
+
+- **测试：**
+
+```java
+@Test
+    public void test01() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring_config.xml");
+        UserService userService = context.getBean("userService", UserService.class);
+        userService.accountMoney();
+    }
+```
+
+- **刷新数据库查看得到结果：**
+
+![image-20220409223013870](Spring框架.assets/image-20220409223013870.png)
+
+
+
+### 5.3.模拟事务操作场景
+
+​	以上场景如果在张三向李四转账后程序出现了错误，导致张三扣了款而李四没有增加金额，这个时候就会出现不可逆的问题出现，我们将数据库双方金额都还原为1000元模拟这个场景测试，在UserService中做一个程序异常产生：
+
+```java
+// 转账的方法
+    public void accountMoney() {
+        // 张三转账少200
+        userDao.reduceMoney();
+        // 模拟异常出现
+        int i = 10/0;
+        // 李四收款多200
+        userDao.addMoney();
+    }
+```
+
+- **测试并查看数据库：**
+
+<img src="Spring框架.assets/image-20220409223544221.png" alt="image-20220409223544221" style="zoom:50%;" />
+
+
+
+![image-20220409223559461](Spring框架.assets/image-20220409223559461.png)
+
+​	我们可以发现，因为程序在扣除张三的钱后出现了异常，导致张三金额少了200，李四的金额却没有增加，所以这种情况肯定不能在现实情况发生，那么我们该如何解决呢？这个时候我们就必须引入事务来进行处理，依据事务的原子性，要么都执行，要么都不执行，那么该如何配置事务呢？
+
+​	这个时候我们需要先开启事务，查看程序在执行业务是否出现了异常，如果没有异常则可以提交这个事务，如果出现异常，则需要回滚事务操作-回到数据操作前的状态。
+
+
+
+### 5.4.事务管理
+
+​	Spring推荐将事务在Service层进行处理，而事务的管理有两种：编程式事务管理和声明式事务管理。编程式因为需要在每一个Service类中都要用代码来实现事务管理，所以会造成代码的臃肿，所以一般不使用这种方式管理事务，而推荐声明式事务管理。**声明式事务管理的底层原理是AOP的方式**。主要的事务管理器API接口如下：
+
+<img src="Spring框架.assets/image-20220409225402790.png" alt="image-20220409225402790" style="zoom:67%;" />
+
+- **基于xml的方式：**
+- **基于注解的方式：**
+
+1.在配置文件spring_config.xml中配置事务管理器：
+
+```xml
+ <!--创建事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--通过set注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+```
+
+2.在配置文件spring_config.xml中开启事务注解，**开启之前需要引入tx命名空间**：
+
+```xml
+<!--开启事务注解，transaction-manager的属性值为上面事务管理器的id-->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+```
+
+3.在Service层上加上注解@Transactional：
+
+```java
+/*
+* @Transactional可以作用在类上，也可以作用在方法上
+* 作用在类上表示所有方法都开启事务，作用在方法只是在该方法中实现事务*/
+@Service
+@Transactional
+public class UserService {...}
+```
+
+4.测试并查看数据库：
+
+![image-20220409230710378](Spring框架.assets/image-20220409230710378.png)
+
+可以发现因为程序出现了异常，事务出现了回滚，使得金额并没有产生异常。
