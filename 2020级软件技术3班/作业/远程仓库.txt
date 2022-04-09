@@ -36,6 +36,11 @@ https://gitee.com/wu-junzhi/Teacher.git - 吴俊志
 https://gitee.com/ma_weihong/springWeek6 - 马巍洪
 https://gitee.com/peng-xinwen/scsc - 彭新文
 
+https://gitee.com/wjj138/pythonProject - 魏敬
+https://gitee.com/dengyouw/zy/tree/master/out/production/zy -邓又文
+
+https://gitee.com/peng-xinwen/week_task6 - 彭新文
+https://gitee.com/wuxianli/pythone1.git - 伍贤莉
 
 
 

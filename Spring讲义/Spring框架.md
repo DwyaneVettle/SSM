@@ -1,5 +1,23 @@
 # Spring框架 SSM
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+    
+</beans>
+```
+
+
+
 ## 前言
 
 ​	Spring框架是Java世界最成功的框架，在企业实际应用中，大部分企业的架构都是基于Spring的。它的成功来自于理念而不是技术，它最核心的理念是IOC（控制反转）和AOP（切面编程），其中IOC是Spring的基础，而AOP是其重要的功能，最典型的就是数据库事物的处理。

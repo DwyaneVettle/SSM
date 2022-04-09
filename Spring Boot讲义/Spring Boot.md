@@ -477,3 +477,113 @@ public class MyConfig {...}
 ![image-20220401214304466](Spring Boot.assets/image-20220401214304466.png)
 
 ### 5.6.配置绑定
+
+​	在配置数据库等信息时会使用到properties文件内容，我们把它加载到JavaBean中，以供随时使用。在之前可能会用以下操作：
+
+```java
+public class getProperties {
+     public static void main(String[] args) throws FileNotFoundException, IOException {
+         Properties pps = new Properties();
+         pps.load(new FileInputStream("application.properties"));
+         Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
+         while(enum1.hasMoreElements()) {
+             String strKey = (String) enum1.nextElement();
+             String strValue = pps.getProperty(strKey);
+             System.out.println(strKey + "=" + strValue);
+             //封装到JavaBean。
+         }
+     }
+ }	
+```
+
+- **@ConfigurationProperties**
+
+​	而在springboot中我们可以直接使用注解@ConfigurationProperties。比如我们在bean包中新增类Car:
+
+```java
+package com.oracle.springboot_01.bean;
+
+public class Car {
+    private String brand; // 品牌
+    private Integer price; // 价格
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
+```
+
+​	此时我们在application.propertise文件中添加Car对象的属性值，并在Car类上添加注解，使我们的对象能够通过properties文件赋值：
+
+```properties
+mycar.brand=BMW
+mycar.price=500000
+```
+
+```java
+/*
+*@Component:将car放到容器中，只有容器中的组件才能配置生效
+*ConfigurationProperties读取配置文件中前缀为mycar的属性赋值  */
+@Component
+@ConfigurationProperties(prefix = "mycar")
+public class Car {...}
+```
+
+​	在HelloController包中添加测试请求：
+
+```java
+@Autowired
+    private Car car;
+@RequestMapping("/car")
+    public Car car() {
+        return car;
+    }
+```
+
+​	发送请求localhost:8888/car得到响应：
+
+<img src="Spring Boot.assets/image-20220402111138858.png" alt="image-20220402111138858" style="zoom:67%;" />
+
+- **@EnableConfigurationProperties + @ConfigurationProperties**
+
+  除了用@ConfigurationProperties和@Component配合使用外，我们还可以使用@EnableConfigurationProperties + @ConfigurationProperties进行配置文件的绑定，在配置文件MyConfig中添加注解@EnableConfigurationProperties：
+
+```java
+// @EnableConfigurationProperties(Car.class)开启Car类的属性配置功能，并自动注册容器
+@Import({User.class, Driver.class})
+@Configuration(proxyBeanMethods = false)
+@ImportResource
+@EnableConfigurationProperties(Car.class)
+public class MyConfig {...}
+```
+
+​	注释Car类的@Component注解，并请求测试：
+
+```java
+// @Component
+@ConfigurationProperties(prefix = "mycar")
+public class Car {...}
+```
+
+<img src="Spring Boot.assets/image-20220402112032780.png" alt="image-20220402112032780" style="zoom:67%;" />
+

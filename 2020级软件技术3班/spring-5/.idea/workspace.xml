@@ -5,8 +5,292 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="552782e6-7df2-4f6f-bdd1-ace126bdd5ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../spring-6/spring-5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/druid-1.1.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/bean/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/factorybean/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/factorybean/MyBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sccs/spring/jdbc.propertise" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spring_config03.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spring_config04.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/test/TestBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/test/TestBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/作业" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring-5/com/sccs/spring/作业" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring-5/spring_config02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring-5/spring_config02.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sccs/spring/test/TestBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sccs/spring/test/TestBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spring_config02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/spring_config02.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../作业/远程仓库.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../作业/远程仓库.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring Boot讲义/Spring Boot.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring Boot讲义/Spring Boot.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/lib/spring-beans-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/lib/spring-context-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/lib/spring-core-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/lib/spring-expression-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/Orders.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/TestOrder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/bean/Class.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/bean/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/bean1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/bean2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/bean3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/bean4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/dao/UserDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/test/TestBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/test/TestBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/out/production/spring-demo/com/sccs/spring5/test/TestSpring.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/spring-demo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/Orders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/TestOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/bean/Class.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/bean/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/bean1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/bean2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/bean3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/bean4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/dao/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/test/TestBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/test/TestBook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo/src/com/sccs/spring5/test/TestSpring.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/lib/druid-1.1.9.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/lib/spring-beans-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/lib/spring-context-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/lib/spring-core-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/lib/spring-expression-5.3.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/autowire/Dept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/autowire/Emp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/bean/MyBeanPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/bean/Orders.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/conllection/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/conllection/Course.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/conllection/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/factorybean/MyBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/com/sccs/spring5/test/TestConllection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/spring-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/spring-config2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/spring-config3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/spring-config4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/out/production/spring-demo02/spring-config5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/spring-demo02.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/autowire/Dept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/autowire/Emp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/bean/MyBeanPost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/bean/Orders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/conllection/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/conllection/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/conllection/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/factorybean/MyBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/com/sccs/spring5/test/TestConllection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/jdbc.propertise" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/spring-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/spring-config2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/spring-config3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/spring-config4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/spring-config5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring-demo02/src/spring-config6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring5/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring5/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring5/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring5/.idea/spring5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring5/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/lib/spring-beans-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/lib/spring-context-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/lib/spring-core-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/lib/spring-expression-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_5/com/sccs/spring/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_5/com/sccs/spring/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_5/com/sccs/spring/bean1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_5/com/sccs/spring/test/TestBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_5/com/sccs/spring/test/TestIOC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_5/spring_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/bean1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/test/TestBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/test/TestIOC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/com/sccs/spring/作业" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/out/production/spring_6/spring_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/spring_6.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/bean1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/test/TestBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/test/TestIOC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/com/sccs/spring/作业" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_5/src/spring_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/com.springsource.net.sf.cglib-2.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/com.springsource.org.aopalliance-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/druid-1.1.9.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/mysql-connector-java-5.1.7-bin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-aop-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-beans-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-context-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-core-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-expression-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-jdbc-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-orm-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/lib/spring-tx-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_5/com/sccs/spring/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_5/com/sccs/spring/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_5/com/sccs/spring/bean1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_5/com/sccs/spring/test/TestBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_5/com/sccs/spring/test/TestIOC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_5/spring_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_6/com/sccs/spring/dao/BookDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_6/com/sccs/spring/dao/BookDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_6/com/sccs/spring/entity/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_6/com/sccs/spring/service/BookService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_6/com/sccs/spring/test/TestBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/out/production/spring_6/spring_config01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/spring_6.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/src/com/sccs/spring/dao/BookDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/src/com/sccs/spring/dao/BookDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/src/com/sccs/spring/entity/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/src/com/sccs/spring/service/BookService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/src/com/sccs/spring/test/TestBook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_6/src/spring_config01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring-demo/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring-demo/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring-demo02/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring-demo02/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring5/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring5/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring5/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring5/.idea/spring5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring5/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/dataSources/ea01fb97-b615-4e4d-ba4f-aabc47550f06/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_5/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_6/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_6/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_demo03/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_demo03/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_code/spring_demo04/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../源码/spring_code/spring_demo04/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/lib/spring-aop-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/lib/spring-beans-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/lib/spring-context-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/lib/spring-core-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/lib/spring-expression-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/out/production/spring_demo03/com/sccs/spring/config/SpringConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/out/production/spring_demo03/com/sccs/spring/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/out/production/spring_demo03/com/sccs/spring/dao/UserDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/out/production/spring_demo03/com/sccs/spring/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/out/production/spring_demo03/com/sccs/spring/test/TestBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/out/production/spring_demo03/spring-config01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/spring_demo03.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/src/com/sccs/spring/config/SpringConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/src/com/sccs/spring/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/src/com/sccs/spring/dao/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/src/com/sccs/spring/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/src/com/sccs/spring/test/TestBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo03/src/spring-config01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/com.springsource.net.sf.cglib-2.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/com.springsource.org.aopalliance-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/spring-aop-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/spring-aspects-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/spring-beans-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/spring-context-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/spring-core-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/lib/spring-expression-5.2.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/aopanno/PersonProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/aopanno/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/aopanno/UserProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/aopxml/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/aopxml/BookProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/config/AopConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/dao/UserDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/proxy/JDKProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/proxy/UserDaoProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/com/sccs/spring/test/TestAOP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/spring-config01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/spring_aop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/out/production/spring_demo03/spring_aop02.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/spring_demo03.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/aopanno/PersonProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/aopanno/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/aopanno/UserProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/aopxml/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/aopxml/BookProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/config/AopConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/dao/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/proxy/JDKProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/com/sccs/spring/test/TestAOP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/spring-config01.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/spring_aop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/spring_demo04/src/spring_aop02.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/java/com/oracle/aa/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/java/com/oracle/springboot_01/Springboot01Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/java/com/oracle/springboot_01/bean/Pet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/java/com/oracle/springboot_01/bean/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/java/com/oracle/springboot_01/configuration/MyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/java/com/oracle/springboot_01/controller/HelloContrller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/main/resources/spring_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../源码/springboot_01/src/test/java/com/oracle/springboot_01/Springboot01ApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +346,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -74,12 +358,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\笔记\ssm\2020级软件技术3班" />
       <recent name="D:\笔记\ssm\2020级软件技术3班\spring-5\src" />
+      <recent name="D:\笔记\ssm\2020级软件技术3班\spring-5\lib" />
+      <recent name="D:\笔记\ssm\2020级软件技术3班" />
       <recent name="D:\笔记\ssm\code\spring-5\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestBean.test02">
+  <component name="RunManager" selected="JUnit.TestBean.test04">
     <configuration name="SpringTest.testBean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spring-5" />
       <extension name="coverage">
@@ -128,9 +413,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestBean.test03" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sccs.spring.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sccs.spring.test" />
+      <option name="MAIN_CLASS_NAME" value="com.sccs.spring.test.TestBean" />
+      <option name="METHOD_NAME" value="test03" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBean.test04" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sccs.spring.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sccs.spring.test" />
+      <option name="MAIN_CLASS_NAME" value="com.sccs.spring.test.TestBean" />
+      <option name="METHOD_NAME" value="test04" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBean.test04" />
         <item itemvalue="JUnit.TestBean.test02" />
+        <item itemvalue="JUnit.TestBean.test03" />
         <item itemvalue="JUnit.TestBean.test01" />
         <item itemvalue="JUnit.SpringTest.testBean" />
       </list>
@@ -149,6 +468,8 @@
       <workItem from="1647926491841" duration="144000" />
       <workItem from="1648088028519" duration="147000" />
       <workItem from="1648174725909" duration="428000" />
+      <workItem from="1649384164035" duration="5997000" />
+      <workItem from="1649470019803" duration="813000" />
     </task>
     <task id="LOCAL-00001" summary="spring外部bean、内部bean、级联bean">
       <created>1647926598251</created>
@@ -166,5 +487,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="spring外部bean、内部bean、级联bean" />
     <option name="LAST_COMMIT_MESSAGE" value="spring外部bean、内部bean、级联bean" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$PROJECT_DIR$/lib/spring-beans-5.2.6.RELEASE.jar!/org/springframework/beans/factory/config/BeanPostProcessor.class</url>
+          <line>12</line>
+          <properties class="org.springframework.beans.factory.config.BeanPostProcessor" method="postProcessBeforeInitialization">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

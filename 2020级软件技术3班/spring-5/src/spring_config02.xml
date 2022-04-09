@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="student" class="com.sccs.spring.bean.Student">
+    <bean id="student" class="com.sccs.spring.bean.Student" scope="prototype">
         <property name="sName" value="张福建"></property>
         <property name="gender" value="男"></property>
         <property name="cls" ref="cls" ></property>

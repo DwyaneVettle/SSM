@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="myBean" class="com.sccs.spring.factorybean.MyBean">
+
+    </bean>
+    <!--创建order对象-->
+    <bean id="order" class="com.sccs.spring.bean.Order" init-method="initMethod" destroy-method="destoryMethod">
+        <property name="oName" value="手机"></property>
+    </bean>
+</beans>
