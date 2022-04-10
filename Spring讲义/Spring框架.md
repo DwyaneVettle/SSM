@@ -2626,6 +2626,70 @@ public class UserService {
 <img src="Spring框架.assets/image-20220409225402790.png" alt="image-20220409225402790" style="zoom:67%;" />
 
 - **基于xml的方式：**
+
+配置事务管理器和切入点：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--开启事务注解-->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    <!--外部文件引入-->
+    <context:property-placeholder location="classpath:com/sccs/spring/jdbc.propertise"></context:property-placeholder>
+    <!--组件扫描-->
+    <context:component-scan base-package="com.sccs.spring"></context:component-scan>
+    <!--配置连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+                            destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="url" value="${jdbc.URL}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!--创建jdbcTemplate对象-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入dataSource-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--创建事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--通过set注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!--配置增强通知-->
+    <tx:advice id="tx_advice">
+        <!--配置事务的相关参数-->
+        <tx:attributes>
+            <!--指定哪种规则的方法上添加事务-->
+            <!--<tx:method name="accountMoney"/>-->
+            <!--所有account开头的方法添加事务
+            标签内部可以添加相关的参数和值-->
+            <tx:method name="account*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置切入点和切面-->
+    <aop:config>
+        <!--切入点-->
+        <aop:pointcut id="pt" expression="execution(* com.sccs.spring.service.UserService.*(..))"/>
+        <!--切面-->
+        <aop:advisor advice-ref="tx_advice" pointcut="pt"></aop:advisor>
+    </aop:config>
+</beans>
+```
+
+
+
 - **基于注解的方式：**
 
 1.在配置文件spring_config.xml中配置事务管理器：
@@ -2661,3 +2725,303 @@ public class UserService {...}
 ![image-20220409230710378](Spring框架.assets/image-20220409230710378.png)
 
 可以发现因为程序出现了异常，事务出现了回滚，使得金额并没有产生异常。
+
+
+
+### 5.5.事务传参
+
+@Transactional注解常用的参数有：
+
+<img src="Spring框架.assets/2022-04-10_105843.png" style="zoom:67%;" />
+
+- **在Spring中事务的传播行为有7种：**
+
+| 传播属性     | 描述                                                         |
+| ------------ | ------------------------------------------------------------ |
+| REQUIRED     | 如果有事务运行，当前的方法就在这个事务中运行，否则就启动一个新的事务，并在自己的事务里运行。 |
+| REQUIRED_NEW | 当前的事务必须启动新的事务，并在自己的事务内运行，如果有事务在运行，应该将它挂起。 |
+| SUPPORTS     | 如果事务在运行，当前的方法就在这个事务内运行，否则它可以不运行在事务中。 |
+| NOT_SUPPORTS | 当前的方法不应该运行在事务中，如果有运行的事务，将它挂起。   |
+| MANDATORY    | 当前的方法必须运行在事务内部，如果没有正在运行的事务，就抛出异常。 |
+| NEVER        | 当前的方法不应该运行在食物中，如果有运行的事务，就抛出异常。 |
+| NESTED       | 如果有事务在运行，当前的方法就应该在这个事务的嵌套事务内运行， 否则就启动一个新的事务，并在它自己的事务内运行。 |
+
+![image-20220410110626405](Spring框架.assets/image-20220410110626405.png)
+
+
+
+- **事务的隔离级别-为了在并发操作中（多事务）它们不会产生影响：**
+
+| 事务隔离级别              | 脏读 | 不可重复度 | 幻读 |
+| ------------------------- | ---- | ---------- | ---- |
+| READ UNCOMMITED(读未提交) | 有   | 有         | 有   |
+| READ COMMITED（读以提交） | 无   | 有         | 有   |
+| REPEATABLE READ(可重复读) | 无   | 无         | 有   |
+| SERIALIZABLE(串行化)      | 无   | 无         | 无   |
+
+	- **脏读：**一个未提交的事务读取到了另一个未提交事务的数据；
+	- **不可重复读：**一个未提交的事务读取到了另一提交事务修改的数据；
+	- **幻读：**一个未提交的事务读取到了另一个提交事务添加数据。
+
+![image-20220410113849350](Spring框架.assets/image-20220410113849350.png)
+
+- **超时时间timeout:**设置在多长时间内提交事务，如果不提交事务就回滚事务，默认超时时间是-1，表示不超时，可以设置以秒为单位的超时时间。
+- **是否只读readOnly:**读是查询操作，写是增删改。参数默认值是false，表示可以增删改查，设置成true后就只能查询，不能增删改了。
+- **是否回滚rollback:**设置出现哪些**异常**进行回滚事务与否。
+
+
+
+### 5.6.完全注解事务管理
+
+1.创建配置文件，创建数据库连接，创建JdbcTemplate对象，创建事务管理器对象：
+
+```java
+package com.sccs.spring.config;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
+
+@Configuration
+@ComponentScan(basePackages="com.sccs.spring")
+@EnableTransactionManagement  // 开启事务
+public class TX_config {
+
+    // 创建数据库连接池
+    @Bean
+    public DruidDataSource getDruidDataSource() {
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        druidDataSource.setUrl("jdbc:mysql://localhost:3306/tb_user?userUnicode=true&characterEncoding=utf-8&useSSL=false");
+        druidDataSource.setUsername("root");
+        druidDataSource.setPassword("root");
+        return druidDataSource;
+    }
+
+    // 创建JdbcTemplate
+    @Bean
+    public JdbcTemplate getJdbcTemplate(DataSource dataSource) {
+        // 在IOC容器中根据类型找到dataSource
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        // 注入DataSource
+        jdbcTemplate.setDataSource(dataSource);
+        return jdbcTemplate;
+    }
+
+    // 创建事务管理器
+    @Bean
+    public DataSourceTransactionManager getTransactionManager(DataSource dataSource) {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
+}
+
+```
+
+2.创建测试方法：
+
+```java
+@Test
+    public void test02() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(TX_config.class);
+        UserService userService = context.getBean("userService", UserService.class);
+        userService.accountMoney();
+    }
+```
+
+![image-20220410124421634](Spring框架.assets/image-20220410124421634.png)
+
+
+
+
+
+## 6.Spring5新功能
+
+
+
+### 6.1.Spring整合日志框架
+
+​	Spring自带了通用日志封装，但也可以整合Log4j，不过它移除了Log4jConfigListener接口，所以官方建议使用Log4j2的版本。
+
+**1.引入相关jar包：**
+
+![image-20220410205250893](Spring框架.assets/image-20220410205250893.png)
+
+**2.创建log4j2.xml的文件进行配置：**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，可以看到log4j2内部各种详细输出-->
+<configuration status="INFO">
+    <!--先定义所有的appender-->
+    <appenders>
+        <!--输出日志信息到控制台-->
+        <console name="Console" target="SYSTEM_OUT">
+            <!--控制日志输出的格式-->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </console>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <!--root：用于指定项目的根日志，如果没有单独指定Logger，则会使用root作为默认的日志输出-->
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>
+```
+
+- **运行测试类就可以看到日志**
+
+以上方式是自动日志的输出，但亦可以手动定义日志，输出想要的日志，创建类UserLog：
+
+```java
+package com.sccs.spring.test;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class UserLog {
+
+    public static final Logger log = LoggerFactory.getLogger(UserLog.class);
+
+    public static void main(String[] args) {
+        log.info("hello log4j2");
+        log.debug("hello log4j");
+    }
+}
+```
+
+运行输出结果：
+
+![image-20220410210326477](Spring框架.assets/image-20220410210326477.png)
+
+
+
+### 6.2.@Nullable注解和函数式编程
+
+- @Nullable作用在方法上表示方法的返回值可以为空；
+- @Nullable作用在方法的参数中时表示参数可以为空；
+- @Nullable作用在属性上表示属性值可以为空。
+
+Spring5支持函数式编程GenericApplicationContext/AnnotationConfigApplicationContext：
+
+```java
+package com.sccs.spring.test;
+
+public class User {
+
+    // 用new的方式需要配置才能注册到IOC容器中
+   /* public static void main(String[] args) {
+        User user = new User();
+    }*/
+    public void test() {
+        System.out.println("User的test()方法执行了。。。");
+    }
+}
+
+```
+
+```java
+@Test
+    public void test04() {
+        // 创建GenericApplicationContext对象
+        GenericApplicationContext context = new GenericApplicationContext();
+        // 通过context对象注册User的bean对象到容器中
+        context.refresh();
+        context.registerBean("user01",User.class, () -> new User());
+        // 获取注册对象
+        User user = (User)context.getBean("user01");
+        user.test();
+    }
+```
+
+![image-20220410212221492](Spring框架.assets/image-20220410212221492.png)
+
+
+
+### 6.3.Spring5和JUnit5的整合
+
+**整合JUnit4:**
+
+**1.引入test的jar包：**
+
+![image-20220410212511025](Spring框架.assets/image-20220410212511025.png)
+
+**2.在test包下创建JunitTest类测试：**
+
+```java
+package com.sccs.spring.test;
+
+import com.sccs.spring.service.UserService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+/*
+* @RunWith指定JUnit的版本
+* @ContextConfiguration加载配置文件，相当于创建了ClassPathXmlApplicationContext对象*/
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring_config.xml")
+public class JunitTest {
+
+    // 注入对象
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void test01() {
+        // 直接调用方法输出
+        userService.accountMoney();
+    }
+}
+
+```
+
+
+
+**整合JUnit5:**
+
+**1.引入Junit5的jar包：**
+
+![image-20220410213743093](Spring框架.assets/image-20220410213743093.png)
+
+```java
+package com.sccs.spring.test;
+
+import com.sccs.spring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+/*@ExtendWith(SpringExtension.class)
+@ContextConfiguration("classpath:spring_config.xml")*/
+@SpringJunitConfig(locations = "spring_config.xml")
+public class JunitTest02 {
+
+    // 注入对象
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void test01() {
+        // 直接调用方法输出
+        userService.accountMoney();
+    }
+}
+```
+
+
+
+### 6.4.WebFlux响应式编程
+
+WebFlux
