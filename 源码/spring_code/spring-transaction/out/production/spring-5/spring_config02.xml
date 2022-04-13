@@ -5,8 +5,8 @@
     <bean id="student" class="com.sccs.spring.bean.Student" scope="prototype">
         <property name="sName" value="张福建"></property>
         <property name="gender" value="男"></property>
-        <property name="cls" ref="cls" ></property>
-        <property name="room" ref="room" ></property>
+        <property name="cls" ref="cls"></property>
+        <property name="room" ref="room"></property>
     </bean>
     <bean id="cls" class="com.sccs.spring.bean.Cls">
         <property name="cName" value="2020软件技术三班"></property>

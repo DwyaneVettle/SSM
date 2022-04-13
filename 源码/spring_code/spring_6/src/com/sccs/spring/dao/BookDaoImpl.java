@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Repository
-public class BookDaoImpl implements BookDao{
+public class BookDaoImpl implements BookDao {
 
     // 注入jdbcTemplate
     @Autowired
@@ -22,16 +22,16 @@ public class BookDaoImpl implements BookDao{
         // 1.创建sql
         String sql = "insert into t_book values(?,?,?)";
         /*
-        * 第一个参数为sql语句，第二个参数为可变参数，sql语句值*/
-        Object[] args = {book.getBookId(),book.getBookname(),book.getBstatus()};
-        int result = jdbcTemplate.update(sql,args);
+         * 第一个参数为sql语句，第二个参数为可变参数，sql语句值*/
+        Object[] args = {book.getBookId(), book.getBookname(), book.getBstatus()};
+        int result = jdbcTemplate.update(sql, args);
         System.out.println(result);
     }
 
     @Override
     public void updateBook(Book book) {
         String sql = "update t_book set bookname = ?,bstatus = ? where book_id = ?";
-        Object[] args = {book.getBookId(),book.getBookname(),book.getBstatus()};
+        Object[] args = {book.getBookId(), book.getBookname(), book.getBstatus()};
         int update = jdbcTemplate.update(sql, args);
         System.out.println(update);
     }

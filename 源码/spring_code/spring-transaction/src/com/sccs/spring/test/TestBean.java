@@ -37,9 +37,9 @@ public class TestBean {
         GenericApplicationContext context = new GenericApplicationContext();
         // 通过context对象注册User的bean对象到容器中
         context.refresh();
-        context.registerBean("user01",User.class, () -> new User());
+        context.registerBean("user01", User.class, () -> new User());
         // 获取注册对象
-        User user = (User)context.getBean("user01");
+        User user = (User) context.getBean("user01");
         user.test();
     }
 

@@ -9,6 +9,7 @@ public class UserService {
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
+
     public void add() {
         System.out.println("add()方法执行了......");
         userDao.update();

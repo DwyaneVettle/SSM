@@ -5,12 +5,12 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-        <!--在bean标签中添加autowire属性配置自动属性
-                autowire="byName"根据属性的名称注入，注入bean的id值需要和类属性的名称一样；
-                autowire="byType"根据类型注入-->
-        <bean id="emp" class="com.sccs.spring5.autowire.Emp" autowire="byType">
-                <!--<property name="dept" ref="dept"></property>-->
-        </bean>
+    <!--在bean标签中添加autowire属性配置自动属性
+            autowire="byName"根据属性的名称注入，注入bean的id值需要和类属性的名称一样；
+            autowire="byType"根据类型注入-->
+    <bean id="emp" class="com.sccs.spring5.autowire.Emp" autowire="byType">
+        <!--<property name="dept" ref="dept"></property>-->
+    </bean>
 
-        <bean id="dept" class="com.sccs.spring5.autowire.Dept"></bean>
+    <bean id="dept" class="com.sccs.spring5.autowire.Dept"></bean>
 </beans>

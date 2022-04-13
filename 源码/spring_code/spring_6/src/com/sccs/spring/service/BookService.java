@@ -16,10 +16,12 @@ public class BookService {
     public void addBook(Book book) {
         bookDao.addBook(book);
     }
+
     // 修改
-    public void updateBook(Book book){
+    public void updateBook(Book book) {
         bookDao.updateBook(book);
     }
+
     // 删除
     public void deleteBook(String id) {
         bookDao.deleteBook(id);
@@ -39,14 +41,17 @@ public class BookService {
     public List<Book> findList() {
         return bookDao.findList();
     }
+
     // 批量添加
     public void batchAdd(List<Object[]> batchArgs) {
         bookDao.batchAddBook(batchArgs);
     }
+
     // 批量修改
     public void batchUpdate(List<Object[]> batchArgs) {
         bookDao.batchUpdate(batchArgs);
     }
+
     // 批量修改
     public void batchDelete(List<Object[]> batchArgs) {
         bookDao.batchDelete(batchArgs);

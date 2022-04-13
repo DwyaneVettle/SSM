@@ -14,8 +14,9 @@ public class Orders {
         this.oname = oname;
         this.oaddr = oaddr;
     }
+
     public void testOrder() {
-        System.out.println(oname+":"+oaddr);
+        System.out.println(oname + ":" + oaddr);
     }
 
 }

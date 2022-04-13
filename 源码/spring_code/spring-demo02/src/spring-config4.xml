@@ -5,11 +5,11 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-        <!--init-method可以调用初始化方法
-                destroy-method可以调用销毁方法-->
-        <bean id="orders" class="com.sccs.spring5.bean.Orders" init-method="initMethod" destroy-method="destroyMethod">
-                <property name="oName" value="电脑"></property>
-        </bean>
-        <!--配置后置处理器-->
-        <bean id="myBeanPost" class="com.sccs.spring5.bean.MyBeanPost"></bean>
+    <!--init-method可以调用初始化方法
+            destroy-method可以调用销毁方法-->
+    <bean id="orders" class="com.sccs.spring5.bean.Orders" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="oName" value="电脑"></property>
+    </bean>
+    <!--配置后置处理器-->
+    <bean id="myBeanPost" class="com.sccs.spring5.bean.MyBeanPost"></bean>
 </beans>

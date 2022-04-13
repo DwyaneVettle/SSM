@@ -13,6 +13,7 @@ public class Emp {
                 "dept=" + dept +
                 '}';
     }
+
     public void test() {
         System.out.println(dept);
     }

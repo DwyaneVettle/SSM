@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages="com.sccs.spring")
+@ComponentScan(basePackages = "com.sccs.spring")
 @EnableTransactionManagement  // 开启事务
 public class TX_config {
 

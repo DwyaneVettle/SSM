@@ -4,9 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--   1.创建service和dao的对象     -->
     <bean id="userService" class="com.sccs.spring5.service.UserService">
-    <!--  2.注入UserDao对象
-         name属性是类中属性的名称
-         ref属性是UserDao对象bean标签的id值-->
+        <!--  2.注入UserDao对象
+             name属性是类中属性的名称
+             ref属性是UserDao对象bean标签的id值-->
         <property name="userDao" ref="userDao"></property>
     </bean>
     <bean id="userDao" class="com.sccs.spring5.dao.UserDaoImpl"></bean>

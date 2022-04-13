@@ -5,8 +5,8 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-        <!--创建对象-->
-        <bean id="myBean" class="com.sccs.spring5.factorybean.MyBean">
+    <!--创建对象-->
+    <bean id="myBean" class="com.sccs.spring5.factorybean.MyBean">
 
-        </bean>
+    </bean>
 </beans>

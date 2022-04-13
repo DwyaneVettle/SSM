@@ -25,6 +25,7 @@ public class TestConllection {
         student.test();
 
     }
+
     @Test
     public void testConllection02() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config2.xml");
@@ -34,6 +35,7 @@ public class TestConllection {
         System.out.println(book2);
 
     }
+
     @Test
     public void test03() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config3.xml");
@@ -48,8 +50,9 @@ public class TestConllection {
         System.out.println("4.获取创建bean实例对象。。。。");
         System.out.println(orders);
         // 手动销毁bean对象
-        ((ClassPathXmlApplicationContext)context).close();
+        ((ClassPathXmlApplicationContext) context).close();
     }
+
     @Test
     public void test05() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config5.xml");

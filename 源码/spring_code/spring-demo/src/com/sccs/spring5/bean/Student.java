@@ -17,7 +17,8 @@ public class Student {
     public void setCls(Class cls) {
         this.cls = cls;
     }
+
     public void test() {
-        System.out.println(sName+":"+gender+":"+cls);
+        System.out.println(sName + ":" + gender + ":" + cls);
     }
 }

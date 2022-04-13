@@ -16,7 +16,7 @@ public class JDKProxy {
         UserDaoImpl userDao = new UserDaoImpl();
         UserDao dao = (UserDao) Proxy.newProxyInstance(JDKProxy.class.getClassLoader(), interfaces, new UserDaoProxy(userDao));
         int result = dao.add(1, 2);
-        System.out.println("result="+result);
+        System.out.println("result=" + result);
     }
 }
 
@@ -24,18 +24,20 @@ public class JDKProxy {
 class UserDaoProxy implements InvocationHandler {
     // 创建UserDaoImpl的代理对象，把它传递过来
     private Object obj;
+
     public UserDaoProxy(Object obj) {
         this.obj = obj;
     }
+
     // 书写增强逻辑
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 方法之前
-        System.out.println("方法之前执行。。。。"+method.getName()+";传递的参数："+ Arrays.toString(args));
+        System.out.println("方法之前执行。。。。" + method.getName() + ";传递的参数：" + Arrays.toString(args));
         // 被增强的方法执行
-        Object res = method.invoke(obj,args);
+        Object res = method.invoke(obj, args);
         // 方法之后
-        System.out.println("方法之后执行。。。。"+obj);
+        System.out.println("方法之后执行。。。。" + obj);
         return res;
     }
 }

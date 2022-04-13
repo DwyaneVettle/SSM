@@ -3024,4 +3024,472 @@ public class JunitTest02 {
 
 ### 6.4.WebFlux响应式编程
 
-WebFlux
+​	传统的web框架如Servlet对异步非阻塞的支持并不理想，而WebFlux是一个典型的非阻塞异步的框架，它支持Netty等，所以它的运行环境的选择性要比传统框架多。
+
+<img src="Spring框架.assets/image-20220412162741628.png" alt="image-20220412162741628" style="zoom:67%;" />
+
+- **同步：**发送方发送请求后需要等到对方回应后才能再做处理；
+- **异步：**发送请求后不需要等待响应，可以做其他事情；
+- **阻塞：**被调用者收到请求后，做完了请求任务之后才反馈结果；
+- **非阻塞：**收到请求后马上做出反馈然后再去做其他事情。
+
+WebFlux的特点：
+
+1. **非阻塞式：**在有限的资源下，提高系统吞吐量和伸缩率，以reactive为基础实现响应式编程；
+2. **函数式编程：**基于Java8的基础上支持函数式编程方式实现路由请求。
+
+**响应式编程：**是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。电子表格程序就是响应式编程的一个例子。单元格可以包含字面值或类似"=B1+C1"的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化。
+
+#### 6.4.1.基于Java实现
+
+​	在Java中提供了两个观察者模式的两个关键类：Observer 和 Observable。观察者就相当于部队的哨兵，观察周围数据的变化，然后发出通知。
+
+1.创建Maven或Spring boot项目，并创建包创建类：
+
+```java
+package com.sccs.webflux_demo.reactor;
+
+import java.util.Observable;
+
+public class ObserverDemo extends Observable {
+
+    public static void main(String[] args) {
+        ObserverDemo observerDemo = new ObserverDemo();
+        observerDemo.addObserver((o,arg) -> {
+            System.out.println("这里发生了变化");
+        });
+        observerDemo.addObserver((o,arg) -> {
+            System.out.println("注意观察，这里要变化了");
+        });
+        // 需要调用如下方法才能执行输出语句
+        observerDemo.setChanged(); // 观察数据变化
+        observerDemo.notifyObservers(); // 通知
+    }
+}
+```
+
+![image-20220412174813302](Spring框架.assets/image-20220412174813302.png)
+
+
+
+#### 6.4.2.基于reactor实现
+
+​	在java9及之后版本基于类Flow实现。但也可以基于ractor框架实现。**Reactor** **是满足** **Reactive** **规范框架**。Reactor有两个核心类：Mono和Flux，这两个类的实现接口Publisher，提供了丰富的操作符，Flux对象实现发布者，返回N个元素；Mono实现发布者，返回0个或1个元素。
+
+​	Flux和Mono都是数据流的发布者，使用它们都可以发送三种数据信号：元素值、错误信号、完成信号。错误信号和完成信号都代表终止信号，终止信号用于告诉订阅者数据流结束了，错误信号终止数据流的同时把错误信息传递给订阅者。
+
+![image-20220412175852645](Spring框架.assets/image-20220412175852645.png)
+
+1.引入依赖：
+
+```xml
+<!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+<dependency>
+    <groupId>io.projectreactor</groupId>
+    <artifactId>reactor-core</artifactId>
+    <version>3.4.14</version>
+</dependency>
+```
+
+2.编写代码测试：
+
+```java
+package com.sccs.webflux_demo.reactor;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class TestReactor {
+
+    public static void main(String[] args) {
+        // just()方法可以直接声明元素，FLux可以声明多个元素，Mono只能声明一个
+        Flux.just(1,2,3);
+        Mono.just(1);
+
+        // 以数组放元素
+        Integer[] arrays = {1,2,3,4,};
+        Flux.fromArray(arrays);
+
+        // 以List方式
+        List<Integer> list = Arrays.asList(arrays);
+        Flux.fromIterable(list);
+
+        // Stream流
+        Stream<Integer> stream = list.stream();
+        Flux.fromStream(stream);
+    }
+}
+```
+
+3.以上方法并不会输出任何内容，因为没有被订阅，调用just()或其他方法只是声明数据流，数据流并没有发出，只有进行订阅之后才能出发数据流，不订阅什么都不会发生：
+
+```java
+// just()方法可以直接声明元素，FLux可以声明多个元素，Mono只能声明一个
+Flux.just(1,2,3).subscribe(System.out::println);
+Mono.just(1).subscribe(System.out::println);
+```
+
+
+
+**三种信号的特点：**
+
+1. 错误信号和完成信号都是终止信号，不能共存；
+2. 如果没有发出任何元素值，而是直接发送了错误或者完成信号，表示空数据流；
+3. 如果没有错误信号，没有完成信号，表示是无限数据流。
+
+```java
+// 错误信号
+// Flux.error(new Exception());
+```
+
+
+
+#### 6.4.3.webflux执行流程和核心API
+
+​	SpringWebFlux基于Reactor实现，默认使用的容器时Netty，它是一个高性能的NIO容器，异步非阻塞的框架。
+
+- 阻塞BIO：
+
+![image-20220413211753017](Spring框架.assets/image-20220413211753017.png)
+
+- 非阻塞NIO：
+
+![image-20220413211841683](Spring框架.assets/image-20220413211841683.png)
+
+- **执行流程：**
+
+核心控制器 DispatchHandler，实现接口 WebHandler，将starter的依赖改成webflux查看：
+
+```xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+```
+
+查看源码可以看到WebHandler的handle方法，打开这个方法的实现可以看到由类DispatcherHandler来进行实现：
+
+```java
+package org.springframework.web.server;
+
+import reactor.core.publisher.Mono;
+
+public interface WebHandler {
+    Mono<Void> handle(ServerWebExchange var1);
+}
+```
+
+```java
+   public Mono<Void> handle(ServerWebExchange exchange) {
+       // 方http请求响应信息，判断是否为空
+        return this.handlerMappings == null ? this.createNotFoundError() : Flux.fromIterable(this.handlerMappings).concatMap((mapping) -> {
+            // 根据请求地址获取对应mapping
+            return mapping.getHandler(exchange);
+        }).next().switchIfEmpty(this.createNotFoundError()).flatMap((handler) -> {
+            // 调用具体业务方法
+            return this.invokeHandler(exchange, handler);
+        }).flatMap((result) -> {
+            // 处理结果返回
+            return this.handleResult(exchange, result);
+        });
+    }
+/*
+DispatcherHandler负责请求处理，其中：
+HandlerMapping：请求查询到处理的方法
+HandlerAdapter：真正负责请求处理
+HandlerResultHandler：响应结果处理
+*/
+```
+
+SpringWebflux 实现函数式编程，两个接口：RouterFunction（路由处理）和 HandlerFunction（处理函数）。
+
+
+
+#### 6.4.4.webflux的实现
+
+- **基于注解的模式，SpringBoot会默认启动Netty作为服务器来运行**：
+
+1.创建spring boot工程，将起步依赖改为webflux的依赖：
+
+```xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+```
+
+2.在propertise文件中修改端口号：
+
+```propertise
+# 应用名称
+spring.application.name=webflux_demo01
+# 端口号
+server.port=8888
+```
+
+3.创建entity、controller、service的包并相关的接口：
+
+```java
+package com.sccs.webflux_demo01.entity;
+
+import lombok.Data;
+
+@Data
+public class User {
+
+    private String name;
+    private String gender;
+    private Integer age;
+    public User() {
+    }
+    public User(String name, String gender, Integer age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+}
+```
+
+```java
+package com.sccs.webflux_demo01.service;
+
+import com.sccs.webflux_demo01.entity.User;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+public interface UserService {
+    //根据 id 查询用户
+    Mono<User> getUserById(int id);
+    //查询所有用户
+    Flux<User> getAllUser();
+    //添加用户
+    Mono<Void> saveUserInfo(Mono<User> user);
+}
+```
+
+```java
+package com.sccs.webflux_demo01.service;
+
+import com.sccs.webflux_demo01.entity.User;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.HashMap;
+import java.util.Map;
+@Service
+public class UserServiceImpl implements UserService{
+    // 构造map
+    private final Map<Integer,User> users = new HashMap<>();
+    public UserServiceImpl() {
+        this.users.put(1,new User("micheal","boy",18));
+        this.users.put(2,new User("james","boy",25));
+        this.users.put(3,new User("lucy","girl",17));
+    }
+    @Override
+    public Mono<User> getUserById(int id) {
+        // 根据id获取
+        return Mono.justOrEmpty( this.users.get(id));
+    }
+
+    @Override
+    public Flux<User> getAllUser() {
+        return Flux.fromIterable(this.users.values());
+    }
+
+    @Override
+    public Mono<Void> saveUserInfo(Mono<User> userMono) {
+        return userMono.doOnNext(person -> {
+            // 向map里面放值,因为不能重复，所以+1
+            int id =users.size()+1;
+            users.put(id,person);
+        }).thenEmpty(Mono.empty()); // 数据流结束
+    }
+}
+```
+
+```java
+@RestController
+public class UserController {
+    //注入 service
+    @Autowired
+    private UserService userService;
+    //id 查询
+    @GetMapping("/user/{id}")
+    public Mono<User> geetUserId(@PathVariable int id) {
+        return userService.getUserById(id);
+    }
+    //查询所有
+    @GetMapping("/user")
+    public Flux<User> getUsers() {
+        return userService.getAllUser();
+    }
+    //添加
+    @PostMapping("/saveuser")
+    public Mono<Void> saveUser(@RequestBody User user) {
+        Mono<User> userMono = Mono.just(user);
+        return userService.saveUserInfo(userMono);
+    } 
+}
+```
+
+4.启动访问http://localhost:8888/user测试：
+
+![image-20220413221448101](Spring框架.assets/image-20220413221448101.png)
+
+
+
+- **基于函数式编程**
+
+在使用函数式编程需要初始化自己的服务器，由两个核心的接口组成：RouterFunction(实现路由功能，将请求转发给对应的Handler)和HandlerFunction(处理请求生成响应函数)。核心任务式定义两个函数式接口的实现并启动服务器。
+
+SpringWebflux 请 求 和 响 应 不 再 是 ServletRequest 和 ServletResponse ，而是ServerRequest 和ServerResponse。
+
+1.将注解实现的工程复制为webflux-demo02，删除controller的实现，保留entity和service部分;
+
+2.创建handler包，并创建UserHandler：
+
+```java
+package com.sccs.webflux_demo01.handler;
+
+import com.sccs.webflux_demo01.entity.User;
+import com.sccs.webflux_demo01.service.UserService;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+
+public class UserHandler {
+    private final UserService userService;
+    public UserHandler(UserService userService) {
+        this.userService = userService;
+    }
+    //根据 id 查询
+    public Mono<ServerResponse> getUserById(ServerRequest request) {
+        //获取 id 值
+        int userId = Integer.valueOf(request.pathVariable("id"));
+        //空值处理
+        Mono<ServerResponse> notFound = ServerResponse.notFound().build();
+        //调用 service 方法得到数据
+        Mono<User> userMono = this.userService.getUserById(userId);
+        //把 userMono 进行转换返回
+        //使用 Reactor 操作符 flatMap
+        return userMono.flatMap(person -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+                                        .body(fromObject(person)))
+                        .switchIfEmpty(notFound);
+    }
+    //查询所有
+    public Mono<ServerResponse> getAllUsers(ServerRequest request) {
+        //调用 service 得到结果
+        Flux<User> users = this.userService.getAllUser();
+        return
+                ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(users,User.class);
+    }
+    //添加
+    public Mono<ServerResponse> saveUser(ServerRequest request) {
+        //得到 user 对象
+        Mono<User> userMono = request.bodyToMono(User.class);
+        return
+                ServerResponse.ok().build(this.userService.saveUserInfo(userMono));
+    }
+}
+```
+
+3.初始化服务器，创建Route路由，在总包结构下创建Server:
+
+```java
+package com.sccs.webflux_demo01;
+
+import com.sccs.webflux_demo01.handler.UserHandler;
+import com.sccs.webflux_demo01.service.UserService;
+import com.sccs.webflux_demo01.service.UserServiceImpl;
+import org.springframework.http.server.reactive.HttpHandler;
+import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.netty.http.server.HttpServer;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
+
+public class Server {
+
+    //1 创建 Router 路由
+    public RouterFunction<ServerResponse> routingFunction() {
+        //创建 hanler 对象
+        UserService userService = new UserServiceImpl();
+        UserHandler handler = new UserHandler(userService);
+        //设置路由
+        return RouterFunctions.route(
+                GET("/users/{id}").and(accept(APPLICATION_JSON)),handler::getUserById)
+                .andRoute(GET("/users").and(accept(APPLICATION_JSON)),handler::getAllUsers);
+    }
+
+    //2 创建服务器完成适配
+    public void createReactorServer() {
+        //路由和 handler 适配
+        RouterFunction<ServerResponse> route = routingFunction();
+        HttpHandler httpHandler = toHttpHandler(route);
+        ReactorHttpHandlerAdapter adapter = new
+                ReactorHttpHandlerAdapter(httpHandler);
+        //创建服务器
+        HttpServer httpServer = HttpServer.create();
+        httpServer.handle(adapter).bindNow();
+    }
+
+    // 最终启动调用
+    public static void main(String[] args) throws Exception{
+        Server server = new Server();
+        server.createReactorServer();
+        System.out.println("enter to exit");
+        System.in.read();
+    }
+}
+```
+
+4.根据控制台的端口访问localhost:port/users
+
+![image-20220413223805774](Spring框架.assets/image-20220413223805774.png)
+
+- 使用WebClient实现，在总包结构下创建Client类：
+
+```java
+package com.sccs.webflux_demo01;
+
+import com.sccs.webflux_demo01.entity.User;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+
+public class Client {
+    public static void main(String[] args) {
+        //调用服务器地址
+        WebClient webClient = WebClient.create("http://127.0.0.1:端口号");
+        //根据 id 查询
+        String id = "1";
+        User userresult = webClient.get().uri("/users/{id}", id)
+                .accept(MediaType.APPLICATION_JSON).retrieve().bodyToMono(User.class)
+                .block();
+        System.out.println(userresult.getName());
+        //查询所有
+        Flux<User> results = webClient.get().uri("/users")
+                .accept(MediaType.APPLICATION_JSON).retrieve().bodyToFlux(User
+                        .class);
+        results.map(stu -> stu.getName())
+                .buffer().doOnNext(System.out::println).blockFirst();
+    }
+}
+```
+
+启动测试观察控制台输出：
+
+<img src="Spring框架.assets/image-20220413224438816.png" alt="image-20220413224438816" style="zoom:67%;" />

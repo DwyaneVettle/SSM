@@ -42,6 +42,7 @@ public class Student {
     public void setSet(Set<String> set) {
         this.set = set;
     }
+
     public void test() {
         System.out.println(Arrays.toString(course));
         System.out.println(list);

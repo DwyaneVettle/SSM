@@ -5,7 +5,7 @@
     <!--创建对象-->
     <bean id="student" class="com.sccs.spring5.conllection.Student">
         <!--数组属性注入-->
-        <property name="course" >
+        <property name="course">
             <array>
                 <value>java</value>
                 <value>mysql</value>

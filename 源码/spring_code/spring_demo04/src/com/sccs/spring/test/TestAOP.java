@@ -16,12 +16,14 @@ public class TestAOP {
         User user = context.getBean("user", User.class);
         user.add();
     }
+
     @Test
     public void test02() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring_aop02.xml");
         Book book = context.getBean("book", Book.class);
         book.buy();
     }
+
     @Test
     public void test03() {
         ApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);

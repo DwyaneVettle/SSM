@@ -10,6 +10,7 @@ public interface BookDao {
 
     // 修改
     void updateBook(Book book);
+
     // 删除
     void deleteBook(String id);
 
@@ -18,8 +19,10 @@ public interface BookDao {
 
     // 查询记录数
     int selectBookCount();
+
     // 查询返回集合
     List<Book> findList();
+
     // 实现批量添加
     void batchAddBook(List<Object[]> batchArgs);
 

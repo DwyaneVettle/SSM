@@ -1,10 +1,10 @@
 package com.sccs.spring.dao;
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
     @Override
     public int add(int a, int b) {
         System.out.println("add()方法执行了。。。");
-        return a+b;
+        return a + b;
     }
 
     @Override
