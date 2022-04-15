@@ -1334,7 +1334,8 @@ import com.sccs.spring.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 /*
-Component注解的value值可以不写，不写是默写为类名首字母小写*/
+Component注解的value值可以不写，不写是默写为类名首字母小写
+*/
 @Component(value="userService")
 public class UserService {
 
@@ -1357,7 +1358,7 @@ public class UserService {
 
 - **使用@Qulifier注解**
 
-  因为@Qulifier注解是根据类型注入，所以如果一个接口有多个实现类的情况下，使用@Autowired注解就没办法根据名称来实现注入，这个时候就需要使用@Qulifier注解，所以它是和@Autowired注解配合使用的。
+  因为@Qulifier注解是根据名称注入，所以如果一个接口有多个实现类的情况下，使用@Autowired注解就没办法根据名称来实现注入，这个时候就需要使用@Qulifier注解，所以它是和@Autowired注解配合使用的。
 
   ```java
   package com.sccs.spring.service;

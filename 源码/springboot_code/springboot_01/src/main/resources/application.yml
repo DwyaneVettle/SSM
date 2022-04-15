@@ -1,0 +1,9 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: springboot_01
+mycar:
+  brand: BMW
+  price: 50000

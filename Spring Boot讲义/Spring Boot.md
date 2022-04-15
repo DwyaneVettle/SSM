@@ -587,3 +587,116 @@ public class Car {...}
 
 <img src="Spring Boot.assets/image-20220402112032780.png" alt="image-20220402112032780" style="zoom:67%;" />
 
+### 5.7.SpringBoot启动原理
+
+1. SpringBoot先加载所有的自动配置类  xxxxxAutoConfiguration；
+2. 每个自动配置类按照条件进行生效，默认都会绑定配置文件指定的值。xxxxProperties里面拿，xxxProperties和配置文件进行了绑定；
+3. 生效的配置类就会给容器中装配很多组件；
+4. 只要容器中有这些组件，相当于这些功能就有了
+5. 定制化配置：
+   1. 用户直接自己@Bean替换底层的组件
+   2. 用户去看这个组件是获取的配置文件什么值就去修改。
+
+
+
+## 6.开发技巧
+
+### 6.1.lombok
+
+lombok可以简化开发，将注解@Data作用在类上，就可以自动的为我们生成get,set,toString,构造方法等方法。要使用lombok需要在Idea中安装lombok的插件，再引入依赖:
+
+![image-20220414175506562](Spring Boot.assets/image-20220414175506562.png)
+
+![image-20220414175529576](Spring Boot.assets/image-20220414175529576.png)
+
+
+
+```xml
+<dependency>
+     <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+</dependency>
+```
+
+在实体类上添加@Data注解即可。
+
+
+
+### 6.2.dev-tools
+
+dev-tools是SpringBoot提供的热部署环境，在启动tomcat容器后，如果更改了源代码，需要重启容器才能生效，有了dev-tools之后，只要容器启动，即使修改了源码，也不需要再次启动容器来查看是否生效。
+
+引入依赖：
+
+```xml
+<dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-devtools</artifactId>
+     <optional>true</optional>
+</dependency>
+```
+
+
+
+### 6.3.yaml文件
+
+​	之间我们使用propertise文件来配置，Spring boot还支持采用Yaml文件来进行配置。*YAML*是"YAML Ain't a Markup Language"（YAML不是一种[标记语言](https://baike.baidu.com/item/标记语言)）的[递归缩写](https://baike.baidu.com/item/递归缩写)。在开发的这种语言时，*YAML* 的意思其实是："Yet Another Markup Language"（仍是一种[标记语言](https://baike.baidu.com/item/标记语言)），但为了强调这种语言以数据做为中心，而不是以标记语言为重点，而用反向缩略语重命名。
+
+​	它非常适合用来做以数据为中心的配置文件。
+
+- **基本语法：**
+
+1. key: value；kv之间有空格；
+2. 区别大小写；
+3. 使用缩进表示层级关系，缩进不能使用tab，只允许使用空格；
+4. 缩进的空格数不重要，只能能清楚的表示层级关系就行；
+5. 字符串不需要加引号。
+
+**创建application.yml文件：**
+
+```yaml
+server:
+  port: 8888
+
+spring:
+  application:
+    name: springboot_01
+    
+mycar:
+  brand: BMW
+  price: 50000
+```
+
+yaml和application文件在操作spring的配置时是有提示的，但是在做自定义的配置时没有提示，我们可以配置自动配置处理器，这样就可以提示了。
+
+引入依赖：
+
+```xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+</dependency>
+```
+
+SpringBoot推荐将打包插件添加配置，这样打包过程中不需要将处理器打包到jar包中，从而减少jar包的大小，达到一种优化。
+
+```xml
+ <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.7.RELEASE</version>
+
+                <configuration>
+                    <mainClass>com.oracle.springboot_01.Springboot01Application</mainClass>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+</pligin>
+```
+

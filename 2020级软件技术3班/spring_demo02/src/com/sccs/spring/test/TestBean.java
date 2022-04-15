@@ -1,10 +1,13 @@
 package com.sccs.spring.test;
 
+import com.sccs.spring.config.MyConfig;
 import com.sccs.spring.controller.UserController;
 import com.sccs.spring.repository.UserRepository;
+import com.sccs.spring.service.TeacherService;
 import com.sccs.spring.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -37,5 +40,20 @@ public class TestBean {
         ApplicationContext context = new ClassPathXmlApplicationContext(config);
         UserRepository userRepository = context.getBean("userRepository", UserRepository.class);
         userRepository.test();
+    }
+
+    @Test
+    public void test04() {
+        String config = "spring_config.xml";
+        ApplicationContext context = new ClassPathXmlApplicationContext(config);
+        TeacherService teacherService = context.getBean("teacher", TeacherService.class);
+        teacherService.update();
+    }
+
+    @Test
+    public void test05() {
+        ApplicationContext context =new AnnotationConfigApplicationContext(MyConfig.class);
+        TeacherService teacherService = context.getBean("teacher", TeacherService.class);
+        teacherService.update();
     }
 }
