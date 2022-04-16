@@ -6,5 +6,21 @@
 </head>
 <body>
     <h1>欢迎来到Spring boot</h1>
+    <h3>测试使用restful风格</h3>
+    <form action="/user" method="get">
+        <input type="submit" value="Rest-GET 提交">
+    </form>
+    <form action="/user" method="post">
+        <input type="submit" value="Rest-POST 提交">
+    </form>
+    <form action="/user" method="post">
+        <input name="_method" type="hidden" value="delete"/>
+        <input name="_m" type="hidden" value="delete"/>
+        <input value="REST-DELETE 提交" type="submit"/>
+    </form>
+    <form action="/user" method="post">
+        <input name="_method" type="hidden" value="PUT"/>
+        <input value="REST-PUT 提交" type="submit"/>
+    </form>
 </body>
 </html>

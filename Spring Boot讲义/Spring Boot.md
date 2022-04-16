@@ -833,4 +833,156 @@ Favicon是访问页面时的网页图标，往往将此图标和网页关联，�
 
 1.访问https://www.baidu.com/favicon.ico找到图标保存到本地作为图标使用；
 
-2.将图标改名为favicon.ico并放到静态路径下，访问页面显示。由于浏览器存在缓存，可能显示不出来，可以尝试清除缓存或更换浏览器再查看。
+2.将图标改名为favicon.ico并放到静态路径下，访问页面显示。由于浏览器存在缓存，可能显示不出来，可以尝试清除缓存或更换浏览器再查看。只会在第一次请求获取favicon.ico，整个session期间不再获取。
+
+
+
+
+
+### 7.2.请求参数处理
+
+#### 7.2.1.请求映射
+
+​	在Spring中请求映射用到的是Restful风格的请求方式，采用注解@XXXMapping()，其中XXX表示使用HTTP请求方式的动词来表示对资源的操作。比如以前操作User用户的增删改查的参数映射可能是这样写的：/getUser，/deleteUser，updateUser，/addUser，而使用了Restful风格后，请求参数只需要使用/user，而将注解写成GetMapping()-获取，PutMapping()-修改，DeleteMapping()-删除，PostMapping()-保存用户。Restful风格的核心是HiddenHttpMethodFilter。
+
+在IndexController中增加以下内容测试：
+
+```java
+package com.sccs.springboot_web.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+
+
+@RestController
+public class IndexController {
+
+    @RequestMapping("/hello")
+    public String index() {
+        return "forward:index.html";
+    }
+
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    public String getUser(){
+        return "GET-张三";
+    }
+
+    @RequestMapping(value = "/user",method = RequestMethod.POST)
+    public String saveUser(){
+        return "POST-张三";
+    }
+
+
+    @RequestMapping(value = "/user",method = RequestMethod.PUT)
+    public String putUser(){
+        return "PUT-张三";
+    }
+
+    @RequestMapping(value = "/user",method = RequestMethod.DELETE)
+    public String deleteUser(){
+        return "DELETE-张三";
+    }
+
+}
+```
+
+但是以上的方式，在HTML中的表单提交只有get和post提交，不能实现put和delete提交，即使能用也只能是get提交的方式，在index.html中增加以下表单访问localhost:8080/index.html测试：
+
+```html
+    <h3>测试使用restful风格</h3>
+    <form action="/user" method="get">
+        <input type="submit" value="Rest-GET 提交">
+    </form>
+    <form action="/user" method="post">
+        <input type="submit" value="Rest-POST 提交">
+    </form>
+    <form action="/user" method="put">
+        <input type="submit" value="Rest-PUT 提交">
+    </form>
+    <form action="/user" method="delete">
+        <input type="submit" value="Rest-DELETE 提交">
+    </form>
+```
+
+我们点击提交框发现get和post请求是没有问题的，但是put和delete的请求方式确发送到了get请求的方式。那么怎么解决这个问题呢？如果想要使用这个功能，Spring在WebAutoConfiguration中创建了一个OrderedHiddenHttpMethodFilter对象，从OrderedHiddenHttpMethodFilter的父类HiddenHttpMethodFilter可以看出我们只需要提供一个"_method"的默认参数就可以了，但前提是将put和delete的请求改成post的方式：
+
+<img src="Spring Boot.assets/2022-04-16_214332.png" style="zoom:50%;" />
+
+<img src="Spring Boot.assets/2022-04-16_214500.png" style="zoom: 50%;" />
+
+改成index.html实现restful：
+
+```html
+<form action="/user" method="post">
+     <input name="_method" value="PUT" type="hidden">
+     <input type="submit" value="Rest-PUT 提交">
+</form>
+<form action="/user" method="post">
+    <input name="_method" value="DELETE"> type="hidden">
+    <input type="submit" value="Rest-DELETE 提交">
+</form>
+```
+
+这个时候测试发现还是没有效果，原因是什么呢？我们发现WebMvcAutoConfiguration
+
+![](Spring Boot.assets/2022-04-16_215044.png)
+
+所以我们需要在yaml文件中手动开启页面表单的restful风格：
+
+```yaml
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+```
+
+启动测试发现正常使用DELETE和PUT提交。基于表单提交的Restful风格的原理是表单提交携带"_method"的参数，请求过来会被HiddenHttpMethodFilter拦截，请求过来查看是否是post请求并有没有出错，如果没有获取到_method的值，查看到这个值后管你大小写，都转成大写，然后查看对应请求是否包含在自己允许的请求中，如果包含使用原生request，采用包装模式requestWrapper重写getMethod方法，返回传入的值，过滤器放行了wrapper，以后的方法是调用的requestWrapper里的值：
+
+![](Spring Boot.assets/2022-04-16_220502.png)
+
+需要注意的是，使用客户端方式如postman等工具模拟发送请求，就不需要filter。
+
+
+
+**扩展：如何将_method的名称换成自己设置的名称。**
+
+1.创建配置包和WebConfig类：
+
+```java
+package com.sccs.springboot_web.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
+
+@Configuration(proxyBeanMethods=false)  // 取出和其他组件的依赖
+public class WebConfig {
+
+    @Bean
+    public HiddenHttpMethodFilter HiddenHttpMethodFilter() {
+        HiddenHttpMethodFilter methodFilter = new HiddenHttpMethodFilter();
+        methodFilter.setMethodParam("_m"); // 改成自己设置的
+        return methodFilter;
+    }
+}
+```
+
+2.这个时候再在提交的表单中增加自己设置的请求方式：
+
+```html
+<form action="/user" method="post">
+        <input name="_method" type="hidden" value="delete"/>
+        <input name="_m" type="hidden" value="delete"/>
+        <input value="REST-DELETE 提交" type="submit"/>
+</form>
+```
+
+3.请求delete提交获取得到_m的值。
+
+
+
+#### 7.2.2.请求映射的原理
+

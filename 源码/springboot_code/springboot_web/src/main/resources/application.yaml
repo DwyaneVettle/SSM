@@ -4,3 +4,8 @@
 # 修改静态资源默认存放位置
 #resources:
 #  static-locations: [classpath:/haha/]
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
