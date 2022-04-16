@@ -700,3 +700,137 @@ SpringBoot推荐将打包插件添加配置，这样打包过程中不需要将�
 </pligin>
 ```
 
+
+
+## 7.web开发
+
+### 7.1.简单场景
+
+#### 7.1.1.静态资源的访问
+
+​	Spring boot的静态资源放在/static(或者/public，或/resources，或/META-INF/resources)下，只要访问当前项目的根路径就可以访问到静态资源了，原理是因为它使用到了SpringMVC的ResourceHttpRequestHandler来进行处理。
+
+1.创建spring boot工程，引入如下依赖：
+
+<img src="Spring Boot.assets/image-20220416163404766.png" alt="image-20220416163404766" style="zoom:67%;" />
+
+2.在src/main/resource下创建application.yaml文件，分别按静态资源可以存放的路径进行创建---/static(或者/public，或/resources，或/META-INF/resources)，并放一些图片等静态资源在下面：
+
+<img src="Spring Boot.assets/image-20220416164734237.png" alt="image-20220416164734237" style="zoom:67%;" />
+
+3.启动项目，访问测试localhost:8080/图片名，这样就可以查看到图片的响应了。
+
+- **原理：**静态资源是映射的/**，当发起请求后先去找Controller去处理，，如果Controller可以处理就返回结果，如果不能响应就找到我当前静态资源的路径去找静态的资源。
+
+  Spring MVC默认的请求资源的配置如下：
+
+  ```propertise
+  spring.mvc.static-path-pattern=/resources/**
+  ```
+
+  如果需要更改这个请求路径可以在yml中按以下方式进行更改：
+
+  ```yaml
+  spring:
+    mvc:
+      static-path-pattern: /res/**
+  
+  # 修改默认的访问路径
+  resources:
+    static-locations: [classpath:/haha/]
+  ```
+
+  这个时候再通过localhost:8080/图片名 的方式就没办法访问了，得需要加上访问得前缀res才可以访问得到。
+
+
+
+#### 7.1.2.webjars技术(了解)
+
+webjars是以Maven的方式引入web的jar包，我们可以通过webjars的官网https://www.webjars.org/去找到引入方式：
+
+![image-20220416171304311](Spring Boot.assets/image-20220416171304311.png)
+
+将对应依赖引入到pom.xml文件中，就可以自动映射到默认的静态资源路径下，然后访问得到，如引入以下依赖：
+
+```xml
+<dependency>
+     <groupId>org.webjars</groupId>
+     <artifactId>jquery</artifactId>
+     <version>3.5.1</version>
+</dependency>
+```
+
+<img src="Spring Boot.assets/image-20220416172224454.png" alt="image-20220416172224454" style="zoom:67%;" />
+
+访问地址：[http://localhost:8080/webjars/**jquery/3.5.1/jquery.js**](http://localhost:8080/webjars/jquery/3.5.1/jquery.js)   后面地址要按照依赖里面的包路径：
+
+<img src="Spring Boot.assets/image-20220416172308582.png" alt="image-20220416172308582" style="zoom:67%;" />
+
+
+
+#### 7.1.3.欢迎页
+
+Spring Boot支持两种访问欢迎页的方式：static静态路径下的index.html和通过Controller处理访问找到index.html的页面。
+
+- **通过静态路径访问index.html**
+
+1.删除application.yaml中的自定义路径（不可以配置访问前缀）：
+
+```yaml
+#spring:
+#  mvc:
+#   static-path-pattern: /resources/**
+# 修改静态资源默认存放位置
+#resources:
+#  static-locations: [classpath:/haha/]
+```
+
+2.在/static下创建index.html页面：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>欢迎来到Spring boot</h1>
+</body>
+</html>
+```
+
+3.启动容器访问localhost:8080：
+
+<img src="Spring Boot.assets/image-20220416173352636.png" alt="image-20220416173352636" style="zoom:67%;" />
+
+- **通过Controller访问index.html:**
+
+1.创建controller包，并创建IndexController类:
+
+```java
+package com.sccs.springboot_web.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+public class IndexController {
+
+    @RequestMapping("/hello")
+    public String index() {
+        return "forward:index.html";
+    }
+}
+```
+
+
+
+#### 7.1.4.自定义Favicon
+
+Favicon是访问页面时的网页图标，往往将此图标和网页关联，达到醒目好记得效果。
+
+1.访问https://www.baidu.com/favicon.ico找到图标保存到本地作为图标使用；
+
+2.将图标改名为favicon.ico并放到静态路径下，访问页面显示。由于浏览器存在缓存，可能显示不出来，可以尝试清除缓存或更换浏览器再查看。

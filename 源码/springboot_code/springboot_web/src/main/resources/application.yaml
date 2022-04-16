@@ -1,0 +1,6 @@
+#spring:
+#  mvc:
+#   static-path-pattern: /resources/**
+# 修改静态资源默认存放位置
+#resources:
+#  static-locations: [classpath:/haha/]
