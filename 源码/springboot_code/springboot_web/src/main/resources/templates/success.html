@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--添加模板规则-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3 th:text="${msg}">Thymeleaf</h3>
+    <h2>
+        <a href="https://www.baidu.com" th:href="${link}">百度01</a>
+        <!--@需要加上绝对地址/就可以请求-->
+        <a href="https://www.baidu.com" th:href="@{/link}">百度02</a>
+    </h2>
+</body>
+</html>

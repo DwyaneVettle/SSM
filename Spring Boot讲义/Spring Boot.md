@@ -984,5 +984,286 @@ public class WebConfig {
 
 
 
-#### 7.2.2.请求映射的原理
+#### 7.2.2.常用参数的注解使用
+
+​	在Spring Boot中，常用的参数注解有：@PathVariable、@RequestHeader、@ModelAttribute、@RequestParam、@MatrixVariable、@CookieValue、@RequestBody；
+
+创建类ParameterContrller测试：
+
+```java
+package com.sccs.springboot_web.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+public class ParameterController {
+    /*
+    * 1.@PathVariable 映射 URL 绑定的占位符
+    通过 @PathVariable 可以将 URL 中占位符参数绑定到控制器处理方法的入参中:URL 中的 {xxx} 占位符可以通过
+    @PathVariable(“xxx”) 绑定到操作方法的入参中。
+    * 2.@RequestHeader表示获取请求头，浏览器F12中的请求头都可以获取*/
+    // /car/{id}表示传参更加id获取
+    @GetMapping("/car/{id}/owner/{username}")
+    public Map<String,Object> getCar(@PathVariable("id") Integer id,
+                                     @PathVariable("username") String name,
+                                     @PathVariable Map<String,String> pv,
+                                     @RequestHeader("User-Agent") String userAgent,
+                                     @RequestHeader Map<String,String> header,
+                                     @RequestParam("age") Integer age,
+                                     @RequestParam("inters") List<String> inters,
+                                     @RequestParam Map<String,String> params,
+                                     @CookieValue("_ga") String _ga,
+                                     @CookieValue("_ga") Cookie cookie){
+
+
+        Map<String,Object> map = new HashMap<>();
+
+//        map.put("id",id);
+//        map.put("name",name);
+//        map.put("pv",pv);
+//        map.put("userAgent",userAgent);
+//        map.put("headers",header);
+        map.put("age",age);
+        map.put("inters",inters);
+        map.put("params",params);
+        map.put("_ga",_ga);
+        System.out.println(cookie.getName()+"===>"+cookie.getValue());
+        return map;
+    }
+
+
+    @PostMapping("/save")
+    public Map postMethod(@RequestBody String content){
+        Map<String,Object> map = new HashMap<>();
+        map.put("content",content);
+        return map;
+    }
+
+
+    //1、语法： 请求路径：/cars/sell;low=34;brand=byd,audi,yd
+    //2、SpringBoot默认是禁用了矩阵变量的功能
+    //      手动开启：原理。对于路径的处理。UrlPathHelper进行解析。
+    //              removeSemicolonContent（移除分号内容）支持矩阵变量的
+    //3、矩阵变量必须有url路径变量才能被解析
+    @GetMapping("/cars/{path}")
+    public Map carsSell(@MatrixVariable("low") Integer low,
+                        @MatrixVariable("brand") List<String> brand,
+                        @PathVariable("path") String path){
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("low",low);
+        map.put("brand",brand);
+        map.put("path",path);
+        return map;
+    }
+
+    // /boss/1;age=20/2;age=10
+
+    @GetMapping("/boss/{bossId}/{empId}")
+    public Map boss(@MatrixVariable(value = "age",pathVar = "bossId") Integer bossAge,
+                    @MatrixVariable(value = "age",pathVar = "empId") Integer empAge){
+        Map<String,Object> map = new HashMap<>();
+
+        map.put("bossAge",bossAge);
+        map.put("empAge",empAge);
+        return map;
+
+    }
+
+}
+
+```
+
+```html
+<h3>基本注解的测试：</h3>
+    <ul>
+        <a href="/car/3/owner/zhangsan"></a>
+        <li>@PathVariable路径变量</li>
+        <li>@RequestHeader获取请求头</li>
+        <li>@RequestParam获取请求参数</li>
+        <li>@CookieValue获取cookie值</li>
+        <li>@RequestAttrebute获取request域属性</li>
+        <li>@RequestBody获取请求体</li>
+        <li>@MatrixVariable矩阵变量</li>
+    </ul>
+```
+
+
+
+​	常用的Servlet API有：WebRequest、ServletRequest、MultipartRequest、 HttpSession、javax.servlet.http.PushBuilder、Principal、InputStream、Reader、HttpMethod、Locale、TimeZone、ZoneId；
+
+​	常用的其他复杂参数有：**Map**、**Model（map、model里面的数据会被放在request的请求域  request.setAttribute）、**Errors/BindingResult、**RedirectAttributes（ 重定向携带数据）**、**ServletResponse（response）**、SessionStatus、UriComponentsBuilder、ServletUriComponentsBuilder。
+
+```java
+Map<String,Object> map,  Model model, HttpServletRequest request 都是可以给request域中放数据，
+request.getAttribute();
+```
+
+
+
+### 7.3.视图解析与模板引擎
+
+​	因为Spring Boot不支持JSP，所以想要进行页面渲染就需要引入第三方的模板引擎。视图解析的三种方法：转发、重定向、自定义模板。在Spring Boot中使用较多的是Thymeleaf，它是一个现代化的Java模板引擎。
+
+​	使用Thymeleaf需要先引入它的依赖：
+
+```xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
+
+1.thymeleaf在底层已经配置好了，我们只需要直接用就行了，配置头信息如下：
+
+```java
+@Configuration(proxyBeanMethods = false)
+@EnableConfigurationProperties(ThymeleafProperties.class)
+@ConditionalOnClass({ TemplateMode.class, SpringTemplateEngine.class })
+@AutoConfigureAfter({ WebMvcAutoConfiguration.class, WebFluxAutoConfiguration.class })
+public class ThymeleafAutoConfiguration { }
+```
+
+- 1、所有thymeleaf的配置值都在 **ThymeleafProperties**
+- 2、配置好了 **SpringTemplateEngine** 
+- **3、配好了** **ThymeleafViewResolver** 
+- 4、我们只需要直接开发页面
+
+2.在/resources/temlates下创建success.html页面，并添加进thymeleaf规则：
+
+```html
+<!DOCTYPE html>
+<!--添加模板规则-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3 th:text="${msg}">Thymeleaf</h3>
+    <h2>
+        <a href="https://www.baidu.com" th:href="${link}">百度01</a>
+        <!--@需要加上绝对地址/就可以请求-->
+        <a href="https://www.baidu.com" th:href="@{/link}">百度02</a>
+    </h2>
+</body>
+</html>
+```
+
+3.创建ViewController测试：
+
+```java
+package com.sccs.springboot_web.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ViewController {
+
+    @GetMapping("/view")
+    public String view(Model model) {
+        // model中的数据放到请求域
+        model.addAttribute("msg","你好，Thymeleaf");
+        model.addAttribute("link","https://www.baidu.com");
+        return "success";
+    }
+}
+```
+
+4.发送请求：localhost:8080/view
+
+<img src="Spring Boot.assets/image-20220422155157896.png" alt="image-20220422155157896" style="zoom:50%;" />
+
+#### 后台管理系统搭建测试：
+
+1.创建Spring Boot项目命名为spring-web02，并引入以下依赖：
+
+<img src="Spring Boot.assets/image-20220422155913813.png" alt="image-20220422155913813" style="zoom: 50%;" />
+
+2.将静态资源和页面复制到项目中：
+
+![image-20220422160638901](Spring Boot.assets/image-20220422160638901.png)
+
+3.创建controller包和IndexController类测试：
+
+```java
+package com.sccs.spring_web02.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class IndexController {
+
+    /*发送/或者/login来到登录页面*/
+    @GetMapping(value = {"/","/login"})
+    public String loginPage(){
+        return "login";
+    }
+}
+```
+
+4.访问localhost:8080
+
+5.创建处理登录的方法：
+
+```java
+// 处理登录，用username和password
+    @PostMapping("/login")
+    public String main(String username, String password) {
+        return "main";
+    }
+```
+
+6.访问localhost:8080/login，输入用户名和密码就进入了主页：
+
+<img src="Spring Boot.assets/image-20220422170026972.png" alt="image-20220422170026972" style="zoom:50%;" />
+
+7.创建bean包和User用户类来登录：
+
+```java
+@Data
+public class User {
+    private String username;
+    private String password;
+}
+```
+
+
+
+8.但是每次刷新，都会停留在这个页面，这就是重复提交，解决重复提交我们可以写一个方法并将提交的页面重定向给上面的main方法，放置表单的方法就是重定向：
+
+```java
+    // 处理登录，用username和password
+    @PostMapping("/login")
+    public String main(User user, HttpSession session, Model model) {
+        // 判断用户名和密码是否为空
+        if (StringUtils.isEmpty(user.getUsername()) && "123456".equals(user.getPassword())) {
+            // 登录成功把用户名和密码存入session
+            session.setAttribute("loginUser",user);
+            return "redirect:/main.html";
+        } else{
+            model.addAttribute("msg","账号密码错误");
+            return "login";
+        }
+    }
+
+    // 解决重复提交去main页面
+    @GetMapping("/main.html")
+    public String mainPage(HttpSession session,Model model) {
+        Object loginUser = session.getAttribute("loginUser");
+        if (loginUser != null) {
+            return "main";
+        }
+        model.addAttribute("msg","请重新登录！！")；
+        return "login";
+    }
+```
 
