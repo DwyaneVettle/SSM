@@ -1674,7 +1674,7 @@ public class UserProxy {
 
 <img src="Spring框架.assets/image-20220301133621829.png" alt="image-20220301133621829" style="zoom:50%;" />
 
-5.在增强类上加注解@AspectJ，让这个类称为一个代理对象：
+5.在增强类上加注解@AspectJ，让这个类成为一个代理对象：
 
 <img src="Spring框架.assets/image-20220301135034540.png" alt="image-20220301135034540" style="zoom:50%;" />
 
@@ -1694,7 +1694,8 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 //增强类，实现不同的通知
-@Component
+@Component】
+@Aspects
 public class UserProxy {
     // 前置通知-在增强方法之前增强
     // @Before表示前置通知
