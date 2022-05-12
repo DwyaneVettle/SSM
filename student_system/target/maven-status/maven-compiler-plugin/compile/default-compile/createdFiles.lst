@@ -1,0 +1,5 @@
+com\sydx\controller\UserController.class
+com\sydx\service\UserService.class
+com\sydx\Person.class
+com\sydx\dao\UserDao.class
+com\sydx\entity\User.class

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sydx.dao.UserDao">
+
+    <insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="com.sydx.entity.User">
+        insert into tb_user(
+        name,
+        remark,
+        user_name,
+        user_pwd
+        )values(
+        #{name},
+        #{remark},
+        #{userName},
+        #{userPwd}
+        )
+    </insert>
+</mapper>
