@@ -1,8 +1,14 @@
-package com.ztr.springmain.controller;/**
- * @Author zoutr
- * @Description  
- * @Date 2022/5/31
- * @Copyright  四川城市职业学院
- **/
+package com.ztr.springmain.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping
 public class HelloController {
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello World!";
+    }
 }

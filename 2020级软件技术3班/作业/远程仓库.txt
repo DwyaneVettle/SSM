@@ -1,5 +1,5 @@
 https://gitee.com/zgf3513/homework-ssm -张广福
-https://gitee.com/xiaomaobuchiyu/spring -李刚
+https://gitee.com/xiaomaobuchiyu/dashboard/projects -李刚
 https://gitee.com/haiqin-smokeee/zuoye.git - 朱伯盈
 https://gitee.com/gxysaxx/phtyonwork  - 高小宇
 https://gitee.com/cssaume/python-project1 - 张福建
@@ -13,7 +13,7 @@ https://gitee.com/li-xiao-qiang/gittest.git -李小强
 https://gitee.com/liu-yangui/gittest.git - 刘延桂
 https://gitee.com/tan-quanzhi/gitset.git - 谭全志
 https://gitee.com/decade-123/pycharmwd - 张钰坤
-https://gitee.com/wu-junzhi/PythonProject.git - 吴俊志
+https://gitee.com/wu-junzhi/dashboard/projects - 吴俊志
 https://gitee.com/dong_zemin/gittest.git - 董泽民
 https://gitee.com/broken-dream-0103/git/tree/zuoye/q - 徐峥
 https://gitee.com/xietaoRR/dr/tree/master/XT - 谢涛

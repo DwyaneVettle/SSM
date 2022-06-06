@@ -1,9 +1,9 @@
 package com.sccs.service;
 
-import com.sydx.dao.SectionDao;
-import com.sydx.entity.Section;
-import com.sydx.utils.BeanMapUtils;
-import com.sydx.utils.MapParameter;
+import com.sccs.dao.SectionDao;
+import com.sccs.entity.Section;
+import com.sccs.utils.BeanMapUtils;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

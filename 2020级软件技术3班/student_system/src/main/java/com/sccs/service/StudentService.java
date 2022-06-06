@@ -1,10 +1,10 @@
 package com.sccs.service;
 
-import com.sydx.dao.StudentDao;
-import com.sydx.entity.Student;
-import com.sydx.utils.BeanMapUtils;
-import com.sydx.utils.MD5Utils;
-import com.sydx.utils.MapParameter;
+import com.sccs.dao.StudentDao;
+import com.sccs.entity.Student;
+import com.sccs.utils.BeanMapUtils;
+import com.sccs.utils.MD5Utils;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.sccs.dao;
 
-import com.sydx.entity.Course;
+import com.sccs.entity.Course;
 
 import java.util.List;
 import java.util.Map;

@@ -1,8 +1,21 @@
-package com.sccs.dao;/**
- * @Author zoutr
- * @Description  
- * @Date 2022/5/27
- * @Copyright  四川城市职业学院
- **/
-public class ClazzDao {
+package com.sccs.dao;
+
+import com.sccs.entity.Clazz;
+import com.sccs.entity.Clazz;
+
+import java.util.List;
+import java.util.Map;
+
+public interface ClazzDao {
+    public int create(Clazz pi);
+
+    public int delete(Map<String, Object> paramMap);
+
+    public int update(Map<String, Object> paramMap);
+
+    public List<Clazz> query(Map<String, Object> paramMap);
+
+    public Clazz detail(Map<String, Object> paramMap);
+
+    public int count(Map<String, Object> paramMap);
 }

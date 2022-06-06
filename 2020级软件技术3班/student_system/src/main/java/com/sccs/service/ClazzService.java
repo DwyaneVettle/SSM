@@ -1,10 +1,10 @@
 package com.sccs.service;
 
 import com.github.pagehelper.PageHelper;
-import com.sydx.dao.ClazzDao;
-import com.sydx.entity.Clazz;
-import com.sydx.utils.BeanMapUtils;
-import com.sydx.utils.MapParameter;
+import com.sccs.dao.ClazzDao;
+import com.sccs.entity.Clazz;
+import com.sccs.utils.BeanMapUtils;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

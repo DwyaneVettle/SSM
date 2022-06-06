@@ -1,6 +1,6 @@
 package com.sccs.dao;
 
-import com.sydx.entity.Score;
+import com.sccs.entity.Score;
 
 import java.util.HashMap;
 import java.util.List;

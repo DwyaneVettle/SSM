@@ -1,9 +1,9 @@
 package com.sccs.service;
 
-import com.sydx.dao.JobDao;
-import com.sydx.entity.Job;
-import com.sydx.utils.BeanMapUtils;
-import com.sydx.utils.MapParameter;
+import com.sccs.dao.JobDao;
+import com.sccs.entity.Job;
+import com.sccs.utils.BeanMapUtils;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

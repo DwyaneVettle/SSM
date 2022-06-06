@@ -1,6 +1,6 @@
 package com.sccs.dao;
 
-import com.sydx.entity.Job;
+import com.sccs.entity.Job;
 
 import java.util.List;
 import java.util.Map;

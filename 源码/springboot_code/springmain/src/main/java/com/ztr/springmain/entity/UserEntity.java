@@ -1,8 +1,12 @@
-package com.ztr.springmain.entity;/**
- * @Author zoutr
- * @Description  
- * @Date 2022/5/31
- * @Copyright  四川城市职业学院
- **/
+package com.ztr.springmain.entity;
+
+import lombok.Data;
+
+@Data
 public class UserEntity {
+
+    private Integer id;
+    private String name;
+    private Integer age;
+    private String remark;
 }

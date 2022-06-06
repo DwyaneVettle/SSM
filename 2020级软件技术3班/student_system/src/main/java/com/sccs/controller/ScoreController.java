@@ -1,9 +1,9 @@
 package com.sccs.controller;
 
-import com.sydx.entity.Score;
-import com.sydx.entity.Student;
-import com.sydx.service.ScoreService;
-import com.sydx.utils.MapControll;
+import com.sccs.entity.Score;
+import com.sccs.entity.Student;
+import com.sccs.service.ScoreService;
+import com.sccs.utils.MapControll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

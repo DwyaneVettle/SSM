@@ -1,10 +1,10 @@
 package com.sccs.controller;
 
-import com.sydx.entity.*;
-import com.sydx.service.*;
-import com.sydx.utils.MD5Utils;
-import com.sydx.utils.MapControll;
-import com.sydx.utils.MapParameter;
+import com.sccs.entity.*;
+import com.sccs.service.*;
+import com.sccs.utils.MD5Utils;
+import com.sccs.utils.MapControll;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

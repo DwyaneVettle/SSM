@@ -1,12 +1,8 @@
-package com.sydx.entity;
+package com.sccs.entity;
 
-import com.sydx.utils.Entity;
+import com.sccs.utils.Entity;
 
-/**
- * 
- * @author 596183363@qq.com
- * @time 2020-06-19 10:28:13
- */
+
 public class Course extends Entity {
 
 	/**

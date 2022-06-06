@@ -1,13 +1,13 @@
 package com.sccs.controller;
 
-import com.sydx.entity.Request;
-import com.sydx.entity.Student;
-import com.sydx.entity.Teacher;
-import com.sydx.entity.User;
-import com.sydx.service.ClazzService;
-import com.sydx.service.RequestService;
-import com.sydx.service.SubjectService;
-import com.sydx.utils.MapControll;
+import com.sccs.entity.Request;
+import com.sccs.entity.Student;
+import com.sccs.entity.Teacher;
+import com.sccs.entity.User;
+import com.sccs.service.ClazzService;
+import com.sccs.service.RequestService;
+import com.sccs.service.SubjectService;
+import com.sccs.utils.MapControll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

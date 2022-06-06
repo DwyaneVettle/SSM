@@ -1,10 +1,10 @@
 package com.sccs.service;
 
 import com.github.pagehelper.PageHelper;
-import com.sydx.dao.CourseDao;
-import com.sydx.entity.Course;
-import com.sydx.utils.BeanMapUtils;
-import com.sydx.utils.MapParameter;
+import com.sccs.dao.CourseDao;
+import com.sccs.entity.Course;
+import com.sccs.utils.BeanMapUtils;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,10 +2,10 @@ package com.sccs.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sydx.entity.*;
-import com.sydx.service.*;
-import com.sydx.service.SectionService;
-import com.sydx.utils.MapControll;
+import com.sccs.entity.*;
+import com.sccs.service.*;
+import com.sccs.service.SectionService;
+import com.sccs.utils.MapControll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

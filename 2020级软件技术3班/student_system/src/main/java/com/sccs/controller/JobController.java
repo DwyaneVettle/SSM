@@ -1,8 +1,8 @@
 package com.sccs.controller;
 
-import com.sydx.entity.Job;
-import com.sydx.service.JobService;
-import com.sydx.utils.MapControll;
+import com.sccs.entity.Job;
+import com.sccs.service.JobService;
+import com.sccs.utils.MapControll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

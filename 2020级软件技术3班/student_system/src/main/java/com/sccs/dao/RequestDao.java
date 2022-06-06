@@ -1,6 +1,6 @@
 package com.sccs.dao;
 
-import com.sydx.entity.Request;
+import com.sccs.entity.Request;
 
 import java.util.List;
 import java.util.Map;

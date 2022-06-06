@@ -1,4 +1,4 @@
-package com.sydx.utils;
+package com.sccs.util;
 
 import java.util.HashMap;
 import java.util.List;

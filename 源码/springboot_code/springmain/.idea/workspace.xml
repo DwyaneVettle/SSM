@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="028a70ca-3ed5-411d-b036-0b80497f3a27" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/CaptchaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/ClazzController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/CourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/JobController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/RequestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/ScoreController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/SectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/SubjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/TeacherController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/ClazzDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/ClazzMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/CourseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/CourseMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/JobDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/JobMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/RequestDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/RequestMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/ScoreDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/ScoreMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/SectionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/SectionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/StudentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/StudentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/SubjectDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/SubjectMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/TeacherDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/TeacherMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/dao/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Clazz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Job.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Score.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Section.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Subject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/ClazzService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/CourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/JobService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/RequestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/ScoreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/SectionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/SubjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/TeacherService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/util/BeanMapUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/util/Code.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/util/Entity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/util/MapControll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/util/MapParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/util/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/BeanMapUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/Code.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/Entity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/GlobalControllerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/MD5Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/MapControll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/MapParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/PathInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/PermissionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/utils/PermissionInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/utils/BeanMapUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/utils/MapParameter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ztr/springmain/controller/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ztr/springmain/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ztr/springmain/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ztr/springmain/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/java/com/sccs/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/resources/db.propertise" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/resources/db.propertise" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/resources/spring_mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/src/main/resources/spring_mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/classes/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/classes/com/sccs/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/classes/com/sccs/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/classes/spring_mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/classes/spring_mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/WEB-INF/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/WEB-INF/classes/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/WEB-INF/classes/com/sccs/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/WEB-INF/classes/com/sccs/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/WEB-INF/classes/spring_mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/student_system/target/student_system/WEB-INF/classes/spring_mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2020级软件技术3班/作业/远程仓库.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2020级软件技术3班/作业/远程仓库.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/dao/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../student_system/src/main/java/com/sydx/service/UserService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\Software\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="29h0C6MBLCaA6lqgIEmHOn2doEL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringmainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springmain" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ztr.springmain.SpringmainApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="028a70ca-3ed5-411d-b036-0b80497f3a27" name="Changes" comment="" />
+      <created>1653549888328</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653549888328</updated>
+      <workItem from="1653549890636" duration="464000" />
+      <workItem from="1653617830173" duration="97000" />
+      <workItem from="1653983369489" duration="3345000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

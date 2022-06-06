@@ -1,6 +1,6 @@
-package com.sydx.entity;
+package com.sccs.entity;
 
-import com.sydx.utils.Entity;
+import com.sccs.utils.Entity;
 
 import java.util.Date;
 

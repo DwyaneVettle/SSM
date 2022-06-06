@@ -1,4 +1,4 @@
-package com.sydx.utils;
+package com.sccs.util;
 
 import java.io.Serializable;
 

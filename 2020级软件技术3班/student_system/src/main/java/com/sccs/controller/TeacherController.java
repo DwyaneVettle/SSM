@@ -1,10 +1,10 @@
 package com.sccs.controller;
 
-import com.sydx.entity.Teacher;
-import com.sydx.service.ClazzService;
-import com.sydx.service.SubjectService;
-import com.sydx.service.TeacherService;
-import com.sydx.utils.MapControll;
+import com.sccs.entity.Teacher;
+import com.sccs.service.ClazzService;
+import com.sccs.service.SubjectService;
+import com.sccs.service.TeacherService;
+import com.sccs.utils.MapControll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,8 +1,8 @@
 package com.sccs.controller;
 
-import com.sydx.entity.Subject;
-import com.sydx.service.SubjectService;
-import com.sydx.utils.MapControll;
+import com.sccs.entity.Subject;
+import com.sccs.service.SubjectService;
+import com.sccs.utils.MapControll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

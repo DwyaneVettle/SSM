@@ -1,9 +1,9 @@
 package com.sccs.service;
 
-import com.sydx.dao.ScoreDao;
-import com.sydx.entity.Score;
-import com.sydx.utils.BeanMapUtils;
-import com.sydx.utils.MapParameter;
+import com.sccs.dao.ScoreDao;
+import com.sccs.entity.Score;
+import com.sccs.utils.BeanMapUtils;
+import com.sccs.utils.MapParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
