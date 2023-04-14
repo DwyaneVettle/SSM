@@ -47,43 +47,43 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 
 ​	进入Spring的官网https://spring.io/进行版本的查看，找到当行栏Projects-->Spring Framework查看下载的版本，其中SNAPSHOT为快照版，GA为稳定版，推荐使用GA版本。
 
-![](Spring框架.assets/2022-02-21_221633.png)
+![](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719426.png)
 
 ​	我们看到目前所使用的稳定版是5.3.16，需要使用它，我们需要访问https://repo.spring.io/ui/native/release/org/springframework/spring/5.3.16/下载对应的版本。
 
-<img src="Spring框架.assets/2022-02-21_221756.png" style="zoom:80%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719427.png" style="zoom:80%;" />
 
-![image-20220221223115159](Spring框架.assets/image-20220221223115159.png)
+![image-20220221223115159](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719428.png)
 
 ### 1.2.创建工程
 
 ​	1.打开idea创建一个普通的Java工程。
 
-![image-20220222090039034](Spring框架.assets/image-20220222090039034.png)
+![image-20220222090039034](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719429.png)
 
-![image-20220222090344239](Spring框架.assets/image-20220222090344239.png)
+![image-20220222090344239](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719430.png)
 
 2.导入Spring相关的jar包-如下4个以及日志包。
 
-![image-20220222090631981](Spring框架.assets/image-20220222090631981.png)
+![image-20220222090631981](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719431.png)
 
-![image-20220222091016284](Spring框架.assets/image-20220222091016284.png)
+![image-20220222091016284](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719432.png)
 
 3.在工程下创建lib文件夹，并将jar包粘贴进该文件夹中。
 
-<img src="Spring框架.assets/image-20220222091145276.png" alt="image-20220222091145276" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719433.png" alt="image-20220222091145276" style="zoom:67%;" />
 
 4.导入jar包到项目中：File--Project Structure--Modules--Dependencise--+号--Jars--lib文件夹中所有jar包--Apply。
 
-<img src="Spring框架.assets/2022-02-22_091719.png" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719434.png" style="zoom:50%;" />
 
 5.查看项目结构导入的jar包。
 
-<img src="Spring框架.assets/image-20220222091841403.png" alt="image-20220222091841403" style="zoom: 80%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719435.png" alt="image-20220222091841403" style="zoom: 80%;" />
 
 6.创建普通类，并在类中创建普通方法。
 
-<img src="Spring框架.assets/image-20220222093019190.png" alt="image-20220222093019190" style="zoom: 50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719436.png" alt="image-20220222093019190" style="zoom: 50%;" />
 
 ```java
 public class User {
@@ -96,7 +96,7 @@ public class User {
 
 7.Spring创建对象可以由配置文件做到，也可以由注解做到，这里以配置文件为例，Spring中配置文件以XML文件实现。在包下创建一个spring的xml配置文件，并命名为bean1。
 
-<img src="Spring框架.assets/image-20220222093439732.png" alt="image-20220222093439732" style="zoom: 67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719437.png" alt="image-20220222093439732" style="zoom: 67%;" />
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -130,7 +130,7 @@ public class TestSpring {
 
 9.测试结果：
 
-![image-20220222094945928](Spring框架.assets/image-20220222094945928.png)
+![image-20220222094945928](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719438.png)
 
 
 
@@ -140,11 +140,11 @@ public class TestSpring {
 
 - 工厂模式解耦
 
-![图1](Spring框架.assets/图1.png)
+![图1](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719439.png)
 
 ​	我们由上面的工厂方式获取对象实现了解耦，但这并不是最佳的解耦方式，IOC就为我们提供了一种特殊的解耦方式，通过XML或者注解的方式进行进一步解耦。
 
-![](Spring框架.assets/ioc.png)
+![](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719440.png)
 
 ### 2.1.IOC接口
 
@@ -154,7 +154,7 @@ public class TestSpring {
 
 ​	在idea中ApplicaitonContext接口上右键Diagrams查看它的结构（后者Ctrl+Alt+B），我们可以发现两个非常重要的类:ClassPathXmlApplicationContext和FileSystemApplicationContext。
 
-​	![image-20220222111004965](Spring框架.assets/image-20220222111004965.png)
+​	![image-20220222111004965](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719441.png)
 
 
 
@@ -705,7 +705,7 @@ System.out.println(courseList);
 
 5.执行测试方法。
 
-<img src="Spring框架.assets/image-20220223221302686.png" alt="image-20220223221302686" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719442.png" alt="image-20220223221302686" style="zoom:67%;" />
 
 - **提取集合注入部分**
 
@@ -732,7 +732,7 @@ public class Book {
 
 2.创建spring-config02.xml文件并进行提取配置--先在配置文件中引入命名空间：
 
-![2022-02-23_223617](Spring框架.assets/2022-02-23_223617.png)
+![2022-02-23_223617](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719443.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -851,7 +851,7 @@ public class MyBean implements FactoryBean<Course> {
     }
 ```
 
-![image-20220224154721566](Spring框架.assets/image-20220224154721566.png)
+![image-20220224154721566](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719445.png)
 
 
 
@@ -865,7 +865,7 @@ public class MyBean implements FactoryBean<Course> {
     </bean>
 ```
 
-![image-20220224155550199](Spring框架.assets/image-20220224155550199.png)
+![image-20220224155550199](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719446.png)
 
 
 
@@ -948,7 +948,7 @@ public class Orders {
 
 4.执行测试查看结果：
 
-<img src="Spring框架.assets/image-20220224165811874.png" alt="image-20220224165811874" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719447.png" alt="image-20220224165811874" style="zoom:67%;" />
 
 
 
@@ -996,7 +996,7 @@ public class MyBeanPost implements BeanPostProcessor {
 
 3.测试查看结果：
 
-<img src="Spring框架.assets/image-20220224171329348.png" alt="image-20220224171329348" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719448.png" alt="image-20220224171329348" style="zoom:67%;" />
 
 
 
@@ -1108,7 +1108,7 @@ public class Dept {
 
   1.使用德鲁伊连接池进行连接，引入相关jar包：
 
-![image-20220224214426807](Spring框架.assets/image-20220224214426807.png)
+![image-20220224214426807](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719449.png)
 
 
 
@@ -1144,7 +1144,7 @@ jdbc.password=root
 
 4.引入jdbc.propertise到spring-config6的配置文件中，但在引入之前，需要先引入context名称空间：
 
-![](Spring框架.assets/2022-02-24_221633.png)
+![](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719450.png)
 
 5.用contex:propertise-placeholder标签引入外部文件，并修改配置
 
@@ -1193,7 +1193,7 @@ jdbc.password=root
 #### 2.6.1.基于注解实现对象的创建
 
 1.创建spring_demo03工程，并引入相关jar包：
-![](Spring框架.assets/2022-02-26_214105.png)
+![](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719451.png)
 
 
 
@@ -1352,7 +1352,7 @@ public class UserService {
 
 3.运行测试类：
 
-![image-20220226222417277](Spring框架.assets/image-20220226222417277.png)
+![image-20220226222417277](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719452.png)
 
 
 
@@ -1494,11 +1494,11 @@ public class SpringConfig {
 
 - **在有接口的情况下，使用JDK动态代理**
 
-![image-20220301095726650](Spring框架.assets/image-20220301095726650.png)
+![image-20220301095726650](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719453.png)
 
 - **在没有接口的情况下，使用CGLIB动态代理**
 
-![image-20220301095756811](Spring框架.assets/image-20220301095756811.png)
+![image-20220301095756811](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719454.png)
 
 
 
@@ -1506,7 +1506,7 @@ public class SpringConfig {
 
 1.使用 JDK 动态代理，使用 Proxy 类里面的方法创建代理对象
 
-![image-20220301101209571](Spring框架.assets/image-20220301101209571.png)
+![image-20220301101209571](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719455.png)
 
 ​	我们要使用的就是newProxyInstance()这个方法，它的参数有三个：
 
@@ -1593,7 +1593,7 @@ class UserDaoProxy implements InvocationHandler {
 
 4.测试main方法的结果：
 
-![image-20220301104730128](Spring框架.assets/image-20220301104730128.png)
+![image-20220301104730128](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719456.png)
 
 
 
@@ -1612,7 +1612,7 @@ class UserDaoProxy implements InvocationHandler {
 
 1.引入AOP相关的依赖：
 
-![](Spring框架.assets/2022-03-01_131411.png)
+![](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719457.png)
 
 2.完成切入点表达式：作用是知道哪个类的哪个方式进行增强，语法结构为：
 
@@ -1670,13 +1670,13 @@ public class UserProxy {
 
 4.使用@Component注解创建User和UserProxy对象：
 
-<img src="Spring框架.assets/image-20220301133607892.png" alt="image-20220301133607892" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719458.png" alt="image-20220301133607892" style="zoom:50%;" />
 
-<img src="Spring框架.assets/image-20220301133621829.png" alt="image-20220301133621829" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719459.png" alt="image-20220301133621829" style="zoom:50%;" />
 
 5.在增强类上加注解@AspectJ，让这个类成为一个代理对象：
 
-<img src="Spring框架.assets/image-20220301135034540.png" alt="image-20220301135034540" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719460.png" alt="image-20220301135034540" style="zoom:50%;" />
 
 6.在Spring配置文件中开启生成代理对象：
 
@@ -1727,7 +1727,7 @@ public class TestAOP {
 }
 ```
 
-<img src="Spring框架.assets/image-20220301135102245.png" alt="image-20220301135102245" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719461.png" alt="image-20220301135102245" style="zoom:67%;" />
 
 9.在UserProxy中创建其他几种通知类型并测试：
 
@@ -1757,7 +1757,7 @@ public class TestAOP {
     }
 ```
 
-<img src="Spring框架.assets/image-20220301135841471.png" alt="image-20220301135841471" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719462.png" alt="image-20220301135841471" style="zoom:50%;" />
 
 after()表示在方法之后执行，afterReturning()表示在方法之后返回结果后执行。
 
@@ -1812,13 +1812,13 @@ public class PersonProxy {
 
 2.在增强类的上面添加注解@Order设置优先级，@Order注解的值越小，优先级越高：
 
-<img src="Spring框架.assets/image-20220301143653955.png" alt="image-20220301143653955" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719463.png" alt="image-20220301143653955" style="zoom:67%;" />
 
-<img src="Spring框架.assets/image-20220301143706206.png" alt="image-20220301143706206" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719464.png" alt="image-20220301143706206" style="zoom:67%;" />
 
 3.测试：
 
-<img src="Spring框架.assets/image-20220301143857736.png" alt="image-20220301143857736" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719465.png" alt="image-20220301143857736" style="zoom:67%;" />
 
 
 
@@ -1918,7 +1918,7 @@ public class BookProxy {
     }
 ```
 
-<img src="Spring框架.assets/image-20220301145621701.png" alt="image-20220301145621701" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719466.png" alt="image-20220301145621701" style="zoom:67%;" />
 
 
 
@@ -1934,7 +1934,7 @@ public class BookProxy {
 
 - 1.引入jar包，构建依赖
 
-<img src="Spring框架.assets/2022-03-07_225133.png" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719467.png" style="zoom:67%;" />
 
 - 2.创建spring_config01.xml文件，并配置数据库连接池：
 
@@ -2096,7 +2096,7 @@ public void addBook(Book book) {
 
 
 
-<img src="Spring框架.assets/image-20220308165218632.png" alt="image-20220308165218632" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719468.png" alt="image-20220308165218632" style="zoom:50%;" />
 
 - **修改删除**
 
@@ -2461,19 +2461,19 @@ void batchDelete(List<Object[]> batchArgs);
 
 ### 5.2.搭建事务环境
 
-![image-20220409211240452](Spring框架.assets/image-20220409211240452.png)
+![image-20220409211240452](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719469.png)
 
 我们以常见的银行转账的方式，在Dao层实现转账和收款的操作，在Service层完成这个逻辑。在数据库tb_user中创建账户表acount，并添加两条数据进行测试，表结构和字段如下：
 
-![image-20220409211959271](Spring框架.assets/image-20220409211959271.png)
+![image-20220409211959271](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719470.png)
 
-![image-20220409212013531](Spring框架.assets/image-20220409212013531.png)
+![image-20220409212013531](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719471.png)
 
 
 
 - **创建项目spring_transaction引入相关jar包，并创建Service和Dao，配置连接池，完成属性注入-在Service中注入Dao，在Dao中注入JdbcTemplate，在JdbcTemplate中注入DataSource:**
 
-<img src="Spring框架.assets/image-20220409222010317.png" alt="image-20220409222010317" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719472.png" alt="image-20220409222010317" style="zoom:67%;" />
 
 ```properties
 jdbc.driverClass=com.mysql.jdbc.Driver
@@ -2587,7 +2587,7 @@ public class UserService {
 
 - **刷新数据库查看得到结果：**
 
-![image-20220409223013870](Spring框架.assets/image-20220409223013870.png)
+![image-20220409223013870](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719473.png)
 
 
 
@@ -2609,11 +2609,11 @@ public class UserService {
 
 - **测试并查看数据库：**
 
-<img src="Spring框架.assets/image-20220409223544221.png" alt="image-20220409223544221" style="zoom:50%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719474.png" alt="image-20220409223544221" style="zoom:50%;" />
 
 
 
-![image-20220409223559461](Spring框架.assets/image-20220409223559461.png)
+![image-20220409223559461](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719475.png)
 
 ​	我们可以发现，因为程序在扣除张三的钱后出现了异常，导致张三金额少了200，李四的金额却没有增加，所以这种情况肯定不能在现实情况发生，那么我们该如何解决呢？这个时候我们就必须引入事务来进行处理，依据事务的原子性，要么都执行，要么都不执行，那么该如何配置事务呢？
 
@@ -2625,7 +2625,7 @@ public class UserService {
 
 ​	Spring推荐将事务在Service层进行处理，而事务的管理有两种：编程式事务管理和声明式事务管理。编程式因为需要在每一个Service类中都要用代码来实现事务管理，所以会造成代码的臃肿，所以一般不使用这种方式管理事务，而推荐声明式事务管理。**声明式事务管理的底层原理是AOP的方式**。主要的事务管理器API接口如下：
 
-<img src="Spring框架.assets/image-20220409225402790.png" alt="image-20220409225402790" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719476.png" alt="image-20220409225402790" style="zoom:67%;" />
 
 - **基于xml的方式：**
 
@@ -2724,7 +2724,7 @@ public class UserService {...}
 
 4.测试并查看数据库：
 
-![image-20220409230710378](Spring框架.assets/image-20220409230710378.png)
+![image-20220409230710378](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719477.png)
 
 可以发现因为程序出现了异常，事务出现了回滚，使得金额并没有产生异常。
 
@@ -2734,7 +2734,7 @@ public class UserService {...}
 
 @Transactional注解常用的参数有：
 
-<img src="Spring框架.assets/2022-04-10_105843.png" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719478.png" style="zoom:67%;" />
 
 - **在Spring中事务的传播行为有7种：**
 
@@ -2748,7 +2748,7 @@ public class UserService {...}
 | NEVER        | 当前的方法不应该运行在食物中，如果有运行的事务，就抛出异常。 |
 | NESTED       | 如果有事务在运行，当前的方法就应该在这个事务的嵌套事务内运行， 否则就启动一个新的事务，并在它自己的事务内运行。 |
 
-![image-20220410110626405](Spring框架.assets/image-20220410110626405.png)
+![image-20220410110626405](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719479.png)
 
 
 
@@ -2765,7 +2765,7 @@ public class UserService {...}
 	- **不可重复读：**一个未提交的事务读取到了另一提交事务修改的数据；
 	- **幻读：**一个未提交的事务读取到了另一个提交事务添加数据。
 
-![image-20220410113849350](Spring框架.assets/image-20220410113849350.png)
+![image-20220410113849350](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719480.png)
 
 - **超时时间timeout:**设置在多长时间内提交事务，如果不提交事务就回滚事务，默认超时时间是-1，表示不超时，可以设置以秒为单位的超时时间。
 - **是否只读readOnly:**读是查询操作，写是增删改。参数默认值是false，表示可以增删改查，设置成true后就只能查询，不能增删改了。
@@ -2838,7 +2838,7 @@ public class TX_config {
     }
 ```
 
-![image-20220410124421634](Spring框架.assets/image-20220410124421634.png)
+![image-20220410124421634](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719481.png)
 
 
 
@@ -2854,7 +2854,7 @@ public class TX_config {
 
 **1.引入相关jar包：**
 
-![image-20220410205250893](Spring框架.assets/image-20220410205250893.png)
+![image-20220410205250893](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719482.png)
 
 **2.创建log4j2.xml的文件进行配置：**
 
@@ -2904,7 +2904,7 @@ public class UserLog {
 
 运行输出结果：
 
-![image-20220410210326477](Spring框架.assets/image-20220410210326477.png)
+![image-20220410210326477](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719483.png)
 
 
 
@@ -2946,7 +2946,7 @@ public class User {
     }
 ```
 
-![image-20220410212221492](Spring框架.assets/image-20220410212221492.png)
+![image-20220410212221492](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719484.png)
 
 
 
@@ -2956,7 +2956,7 @@ public class User {
 
 **1.引入test的jar包：**
 
-![image-20220410212511025](Spring框架.assets/image-20220410212511025.png)
+![image-20220410212511025](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719485.png)
 
 **2.在test包下创建JunitTest类测试：**
 
@@ -2995,7 +2995,7 @@ public class JunitTest {
 
 **1.引入Junit5的jar包：**
 
-![image-20220410213743093](Spring框架.assets/image-20220410213743093.png)
+![image-20220410213743093](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719486.png)
 
 ```java
 package com.sccs.spring.test;
@@ -3028,7 +3028,7 @@ public class JunitTest02 {
 
 ​	传统的web框架如Servlet对异步非阻塞的支持并不理想，而WebFlux是一个典型的非阻塞异步的框架，它支持Netty等，所以它的运行环境的选择性要比传统框架多。
 
-<img src="Spring框架.assets/image-20220412162741628.png" alt="image-20220412162741628" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719487.png" alt="image-20220412162741628" style="zoom:67%;" />
 
 - **同步：**发送方发送请求后需要等到对方回应后才能再做处理；
 - **异步：**发送请求后不需要等待响应，可以做其他事情；
@@ -3070,7 +3070,7 @@ public class ObserverDemo extends Observable {
 }
 ```
 
-![image-20220412174813302](Spring框架.assets/image-20220412174813302.png)
+![image-20220412174813302](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719488.png)
 
 
 
@@ -3080,7 +3080,7 @@ public class ObserverDemo extends Observable {
 
 ​	Flux和Mono都是数据流的发布者，使用它们都可以发送三种数据信号：元素值、错误信号、完成信号。错误信号和完成信号都代表终止信号，终止信号用于告诉订阅者数据流结束了，错误信号终止数据流的同时把错误信息传递给订阅者。
 
-![image-20220412175852645](Spring框架.assets/image-20220412175852645.png)
+![image-20220412175852645](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719489.png)
 
 1.引入依赖：
 
@@ -3156,11 +3156,11 @@ Mono.just(1).subscribe(System.out::println);
 
 - 阻塞BIO：
 
-![image-20220413211753017](Spring框架.assets/image-20220413211753017.png)
+![image-20220413211753017](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719490.png)
 
 - 非阻塞NIO：
 
-![image-20220413211841683](Spring框架.assets/image-20220413211841683.png)
+![image-20220413211841683](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719491.png)
 
 - **执行流程：**
 
@@ -3340,7 +3340,7 @@ public class UserController {
 
 4.启动访问http://localhost:8888/user测试：
 
-![image-20220413221448101](Spring框架.assets/image-20220413221448101.png)
+![image-20220413221448101](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719492.png)
 
 
 
@@ -3460,7 +3460,7 @@ public class Server {
 
 4.根据控制台的端口访问localhost:port/users
 
-![image-20220413223805774](Spring框架.assets/image-20220413223805774.png)
+![image-20220413223805774](https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719493.png)
 
 - 使用WebClient实现，在总包结构下创建Client类：
 
@@ -3494,4 +3494,4 @@ public class Client {
 
 启动测试观察控制台输出：
 
-<img src="Spring框架.assets/image-20220413224438816.png" alt="image-20220413224438816" style="zoom:67%;" />
+<img src="https://gitee.com/zou_tangrui/note-pic/raw/master/img/202302171719494.png" alt="image-20220413224438816" style="zoom:67%;" />
