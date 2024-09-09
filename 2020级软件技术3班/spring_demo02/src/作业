@@ -1,6 +1,0 @@
-创建repisitory,service,controller包，分别创建3个类，然后用@Repository,
-@Servcie,@Controller
-完成注入测试
-
-
-完成全注解开发，实现属性普通属性和类属性的注入
